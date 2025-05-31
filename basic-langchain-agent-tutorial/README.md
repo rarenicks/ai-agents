@@ -43,7 +43,9 @@ The project has a minimal structure:
 
 
 ├── main.py
+
 └── README.md
+
 
 
 * `main.py`: Contains all the Python code for defining and running the LangChain content writer.

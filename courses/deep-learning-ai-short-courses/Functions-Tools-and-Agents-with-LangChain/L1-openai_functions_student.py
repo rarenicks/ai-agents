@@ -292,7 +292,7 @@ args = json.loads(response["choices"][0]["message"]['function_call']['arguments'
 observation = get_current_weather(args)
 
 
-# In[ ]:
+# In[25]:
 
 
 messages.append(
@@ -304,7 +304,7 @@ messages.append(
 )
 
 
-# In[ ]:
+# In[26]:
 
 
 response = openai.ChatCompletion.create(

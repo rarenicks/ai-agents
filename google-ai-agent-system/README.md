@@ -1,87 +1,66 @@
 # Google AI Agent System - Enterprise Edition
 
-This project is a reference implementation of an **Enterprise Multi-Agent System** specialized for the Google ecosystem. It functions as a platform for building, deploying, and monitoring fleets of autonomous agents.
+Welcome to the **Google AI Agent System**, a professional-grade reference implementation for building multi-agent ecosystems. This platform leverages the **Google Agent Development Kit (ADK)** to coordinate specialized agents, manage enterprise safety, and provide deep observability.
 
-## 🌟 Enterprise Architecture
+![System Architecture](https://img.shields.io/badge/Architecture-Supervisor--Pattern-blue?style=for-the-badge)
+![Framework](https://img.shields.io/badge/Framework-Google--ADK-orange?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-All--Systems--Functional-green?style=for-the-badge)
 
-The system implements the **Supervisor Pattern** for multi-agent orchestration.
+---
 
-```mermaid
-graph TD
-    User --> Engine[Agent Engine (FastAPI)]
-    Engine --> Registry[Agentspace Registry]
-    Registry --> Team[Team Alpha (Supervisor)]
-    
-    subgraph "Team Alpha"
-    Team -->|Delegates| Researcher[Researcher Agent]
-    Team -->|Delegates| Writer[Writer Agent]
-    Researcher -->|Search Tools| Web
-    Writer -->|Formatting| DocGen
-    end
+## 📖 Essential Documentation
 
-    Engine --> Observability[Observability Layer]
-    Observability --> Logs[Google Cloud Logging (Simulated)]
-```
+Navigate the platform with our specialized guides:
 
-## 🚀 Key Features
+-   [**🏗 Architecture**](docs/ARCHITECTURE.md): Deep dive into the Supervisor Pattern, Registry design, and internal communication protocols.
+-   [**🛡 Plugins & Safety**](docs/PLUGINS.md): Learn how ADK Plugins handle observability, trace logging, and corporate security policies.
+-   [**🌐 Tools & MCP**](docs/TOOLS_AND_MCP.md): Discover the hybrid tool system combining local Python functions with remote **Model Context Protocol** services.
+-   [**🏥 Health & Ops**](docs/HEALTH_AND_OPS.md): Setup instructions for health monitoring, system diagnostics, and performance optimization (caching & resumability).
 
-### 1. Agentspace Registry (Powered by Google ADK)
-- **ADK Integration**: Leverages the `google-adk` package for enterprise-grade agent orchestration and delegation.
-- **Dynamic Loading**: Agents are registered in `engine/space/registry.py` and lazily instantiated.
-- **Teams**: Support for single agents and hierarchical teams using the ADK `Coordinator` pattern.
+---
 
-### 2. Hierarchical Teams (The "Brain")
-- **Supervisor (LlmAgent)**: An ADK-based orchestrator that routes tasks between workers using native delegation.
-- **Workers**:
-    - **Researcher**: Equipped with search tools to gather facts.
-    - **Writer**: Specialized in synthesizing information into Markdown reports.
+## 🚀 One-Minute Quick Start
 
-### 3. Local & Cloud Versatility
-- **Model Agnostic**: Supports Google Gemini via Vertex AI/AI Studio or local LLMs (like Llama 3) via **Ollama** and **LiteLLM**.
-- **Enterprise Ready**: Designed to scale from local development to production on Google Cloud Agent Engine.
-
-### 4. Enterprise Observability & Safety (ADK Plugins)
-- **Native ADK Plugins**: Custom `EnterpriseObservabilityPlugin` intercepts agent lifecycle events for deep tracing.
-- **Policy Enforcement**: `AgentPolicyPlugin` provides dynamic mission control, human-in-the-loop (HITL) intercepts for sensitive tools, and dynamic system instruction injection.
-- **Agent Health**: Native `/health/check` endpoint verifies the readiness and connectivity of every agent in the registry.
-
-### 5. Advanced Runtime Features
-- **MCP Integration**: Full Support for Model Context Protocol (MCP). Discover and call remote enterprise tools securely.
-- **Resumability**: Long-running agent sessions can be paused and resumed using ADK's native `ResumabilityConfig`.
-- **Context Caching**: Optimized for heavy workloads with automated context TTL management.
-
-## 🛠 System Components
-
-- **`engine/agents/supervisor.py`**: The team orchestrator logic.
-- **`engine/agents/researcher.py`**: Validates data sources.
-- **`engine/agents/writer.py`**: Generates final output.
-- **`frameworks/a2a/`**: Inter-agent protocols.
-- **`frameworks/mcp/`**: External tool integration.
-
-## ⚡️ Quick Start
-
-1. **Setup**:
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
-   cp .env.example .env
-   ```
-
-2. **Launch Engine**:
-   ```bash
-   ./start.sh
-   # API is now live at http://localhost:8000
-   ```
-
-3. **Web Interface**:
-   ```bash
-   ./venv/bin/streamlit run client/web_client.py
-   ```
-
-## 🧪 Evaluation
-
-Run the automated test suite to validate the full team's performance:
+### 1. Environment Setup
 ```bash
-./venv/bin/python3 evaluation/run_eval.py
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env  # Update your GOOGLE_API_KEY
 ```
+
+### 2. Launch the Engine
+```bash
+./start.sh
+```
+
+### 3. Verify Health
+```bash
+./venv/bin/python3 scripts/system_health.py
+```
+
+---
+
+## 🛠 Platform Highlights
+
+### 🧠 Strategic Orchestration
+The system uses a central **Supervisor** to plan and delegate tasks. It utilizes native ADK delegation to transfer control between high-level reasoning and specialized worker agents like the **Researcher** and **Writer**.
+
+### 🔌 Enterprise Plugin Architecture
+-   **Observability**: Real-time logging of thoughts and tool executions.
+-   **Guardrails**: Automated policy injection and sensitive tool intercepts.
+-   **Efficiency**: Native context caching and session resumability.
+
+### 🏢 Cross-Cloud Versatility
+Whether you use **Google Gemini** (Vertex AI / AI Studio) or local models via **Ollama**, the platform adapts seamlessly using the **LiteLLM** registry integration.
+
+---
+
+## 🤝 Contributions
+We welcome contributions to the agent registry, tool implementations, and core engine enhancements.
+
+## 📜 License
+Licensed under the [MIT License](LICENSE).
+
+---
+*Built with ❤️ by the Google Agentic AI Community.*

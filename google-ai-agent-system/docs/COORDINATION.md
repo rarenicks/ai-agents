@@ -40,6 +40,12 @@ Code execution often generates data (files, charts, text output). The system use
 ### 2. Multi-Agent Delegation
 The Supervisor is initialized with `sub_agents=[researcher, writer, analyst]`. In ADK, these agents are treated as "Transfer Tools" that the LLM can invoke to hand over the conversation.
 
+### 3. A2A Open Protocol (Agent-to-Agent)
+The system supports the **A2A Open Protocol** for communicating with agents outside the immediate team hierarchy.
+- **Protocol Definition**: `frameworks/a2a/protocol.py`
+- **Capabilities**: Discovery, Negotiation, task assignment, and observations.
+- **Mesh Communication**: Handled by the `A2AGateway`, a simulated service mesh for cross-platform agent sync.
+
 ---
 
 ## 🧪 Testing Coordination

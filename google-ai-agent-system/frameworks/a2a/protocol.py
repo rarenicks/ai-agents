@@ -1,48 +1,66 @@
 from enum import Enum
 from pydantic import BaseModel, Field
 from typing import Optional, Dict, Any, List
+import uuid
+import time
 
-class MessageType(str, Enum):
-    REQUEST = "request"       # Initial task request
-    HANDOFF = "handoff"       # Passing control/context to another agent
-    UPDATE = "update"         # Intermediate status update
-    FINAL_REPLY = "final_reply" # Completed task response
-    ERROR = "error"           # Error reporting
+class A2AMessageType(str, Enum):
+    # Core lifecycle
+    DISCOVERY = "discovery"      # Find agent capabilities
+    NEGOTIATION = "negotiation"  # Agree on task parameters/cost
+    TASK_ASSIGN = "task_assign"  # Execute a specific action
+    
+    # Execution
+    PROPOSAL = "proposal"        # Agent suggesting a plan
+    OBSERVATION = "observation"  # Sharing environment data
+    HANDOFF = "handoff"          # Transferring total control
+    
+    # Completion
+    ACKNOWLEDGEMENT = "ack"      # Confirming receipt
+    RESULT = "result"            # Final output delivery
+    ERROR = "error"              # Failure notification
 
-class AgentArtifact(BaseModel):
-    """Structured data produced by an agent that can be used by others."""
-    id: str
-    type: str  # e.g., "search_results", "draft", "metrics"
-    data: Any
-    timestamp: float
+class A2AContext(BaseModel):
+    """Contextual metadata for the A2A conversation."""
+    trace_id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    priority: int = 1  # 1-5, 5 being critical
+    ttl: int = 3600    # Message validity in seconds
+    security_level: str = "standard" # standard, confidential, restricted
 
-class AgentMessage(BaseModel):
+class A2AArtifact(BaseModel):
+    """Structured data shared between A2A agents."""
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    mimetype: str  # e.g., "application/json", "text/markdown"
+    payload: Any
+    schema_url: Optional[str] = None
+
+class A2AMessage(BaseModel):
     """
-    A2A Open Protocol Message Format.
-    Aligns with Google's vision for a common language between agents.
+    A2A (Autonomous Agent-to-Agent) Open Protocol.
+    The next-generation standard for multi-agent synchronization.
     """
-    message_id: str = Field(..., description="Unique message ID")
-    sender_id: str = Field(..., description="ID of the sending agent")
-    recipient_id: str = Field(..., description="ID of the receiving agent")
-    conversation_id: str = Field(..., description="Unique thread ID")
+    protocol_version: str = "2.0.0"
+    message_id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    timestamp: float = Field(default_factory=time.time)
     
-    type: MessageType = Field(default=MessageType.REQUEST)
-    content: str = Field(..., description="The primary text/payload")
+    sender: str = Field(..., description="URI or ID of the sender")
+    receiver: str = Field(..., description="URI or ID of the receiver")
     
-    artifacts: List[AgentArtifact] = Field(default_factory=list, description="Structured data shared in this message")
-    metadata: Dict[str, Any] = Field(default_factory=dict, description="Additional context (e.g., source info, priority)")
+    type: A2AMessageType
+    content: str
     
+    context: A2AContext = Field(default_factory=A2AContext)
+    artifacts: List[A2AArtifact] = Field(default_factory=list)
+    metadata: Dict[str, Any] = Field(default_factory=dict)
+
     class Config:
         json_schema_extra = {
             "example": {
-                "message_id": "msg-001",
-                "sender_id": "supervisor",
-                "recipient_id": "researcher",
-                "conversation_id": "conv-456",
-                "type": "handoff",
-                "content": "Please research current AI trends.",
-                "artifacts": [],
-                "metadata": {"source": "user-request"}
+                "sender": "agent://supervisor",
+                "receiver": "agent://researcher",
+                "type": "task_assign",
+                "content": "Analyze the impact of A2A on agent performance.",
+                "context": {"priority": 3},
+                "artifacts": []
             }
         }
-

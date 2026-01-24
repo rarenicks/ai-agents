@@ -1,8 +1,8 @@
 import os
 from google.adk.agents.llm_agent import Agent as LlmAgent
-from engine.agents.researcher import build_researcher
 from engine.agents.writer import build_writer
 from engine.agents.analyst import build_data_analyst
+from tools.a2a_tools import open_a2a_communication, list_a2a_directory
 
 def build_supervisor_team():
     from engine.llm_factory import get_adk_model_name
@@ -24,10 +24,12 @@ def build_supervisor_team():
         - Use the 'Senior_Researcher' to gather facts and search the web.
         - Use the 'Professional_Tech_Writer' to format research results into high-quality documents.
         - Use the 'Data_Analyst' for complex calculations, python code execution, and data processing.
+        - Use the A2A Open Protocol tools ('open_a2a_communication', 'list_a2a_directory') to collaborate with high-level remote agents found in the directory.
         
         Analyze the request, transfer to the appropriate agent, and provide a final synthesized answer when all information gathered.
         When you need to transfer, use the exact internal names provided.""",
-        sub_agents=[researcher_agent, writer_agent, analyst_agent]
+        sub_agents=[researcher_agent, writer_agent, analyst_agent],
+        tools=[open_a2a_communication, list_a2a_directory]
     )
     
     return coordinator

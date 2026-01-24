@@ -1,0 +1,24 @@
+# Core Agent Framework
+google-adk[extensions]
+litellm
+
+# LLM Providers
+langchain-google-genai
+langchain-google-vertexai
+langchain-ollama
+
+# API and Web
+fastapi
+uvicorn
+python-dotenv
+pydantic
+requests
+streamlit
+
+# Tools
+duckduckgo-search
+
+# Legacy/Compatibility
+langchain
+langgraph
+langchain-community

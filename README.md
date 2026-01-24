@@ -1,27 +1,35 @@
-# ai-agents (Codebank)
+# ai-agents (Enterprise Codebank)
 
-Welcome to the **ai-agents** codebank. This repository is a collection of various AI agent implementations, ranging from educational tutorials to enterprise-grade systems.
+Welcome to the **ai-agents** codebank. This repository is a curated collection of AI agent implementations, ranging from introductory tutorials to enterprise-grade autonomous systems.
 
-## 🚀 Featured Projects
-
-### 1. Google AI Agent System (ADK)
+## 🏆 Featured Project: Google AI Agent System (ADK)
 **Directory: `google-ai-agent-system/`**
-An enterprise-grade multi-agent system built using the **Google Agent Development Kit (ADK)**. 
-- **Supervisor Pattern**: Uses a central Supervisor to delegate tasks between specialized Researcher and Writer agents.
-- **Local & Cloud Support**: Integrated with Google Gemini and local models (LLama 3) via Ollama.
-- **Observability**: Built-in trace logging and performance monitoring.
 
-### 2. Agents From Scratch (LangGraph Workshop)
+This is our flagship implementation of an enterprise-ready multi-agent platform using the **Google Agent Development Kit (ADK)**. 
+
+### 🌟 Key Capabilities
+- **Supervisor Pattern**: High-level orchestration between specialized Researcher and Writer agents.
+- **Enterprise Safety**: Custom **ADK Plugins** for policy enforcement and safety guardrails.
+- **Deep Observability**: Real-time trace logging of thoughts, tool calls, and model metadata.
+- **MCP Protocol**: Native support for **Model Context Protocol** to discover and call remote enterprise tools.
+- **Ops Ready**: Built-in health checks, context caching, and session resumability.
+
+**Documentation Quick Links:**
+[🏗 Architecture](google-ai-agent-system/docs/ARCHITECTURE.md) | [🛡 Plugins](google-ai-agent-system/docs/PLUGINS.md) | [🌐 Tools & MCP](google-ai-agent-system/docs/TOOLS_AND_MCP.md) | [🏥 Health & Ops](google-ai-agent-system/docs/HEALTH_AND_OPS.md)
+
+---
+
+## 📚 Educational Implementations
+
+### 1. Agents From Scratch (LangGraph Workshop)
 **Directory: `notebooks/`, `src/email_assistant/`**
-A guide to building agents from scratch, culminating in an "ambient" agent that manages email via the Gmail API.
-- **4 Sections**: Basics, Evaluation, Human-in-the-loop, and Memory.
-- **Framework**: Built primarily using LangGraph.
+A comprehensive guide to building agents from first principles using LangGraph, building up to an "ambient" agent that manages email via the Gmail API.
 
-### 3. Crew AI Implementations
-- **[Basic Crew AI Tutorial](basic-crew-ai-agent-tutorial)**: Implementation and setup instructions for Content Writer Agents using Crew AI.
+### 2. Crew AI Implementations
+- **[Basic Crew AI Tutorial](basic-crew-ai-agent-tutorial)**: Introduction to task-based multi-agent coordination for content creation.
 
-### 4. LangChain Agent Tutorials
-- **[Basic LangChain Tutorial](basic-langchain-agent-tutorial)**: Chaining together language models and tools for complex reasoning.
+### 3. LangChain Agent Tutorials
+- **[Basic LangChain Tutorial](basic-langchain-agent-tutorial)**: Learning the fundamentals of tool-calling and reasoning chains.
 
 ---
 
@@ -33,25 +41,17 @@ A guide to building agents from scratch, culminating in an "ambient" agent that 
     cd ai-agents
     ```
 
-2. **Explore a Project**:
-    Each subdirectory contains its own `README.md` with specific setup instructions. For the enterprise system:
+2. **Run the Enterprise System**:
     ```bash
     cd google-ai-agent-system
     ./start.sh
+    ./venv/bin/python scripts/system_health.py # Run diagnostics
     ```
-
-3. **Environment Setup**:
-    Most projects require a `.env` file. See `.env.example` in the respective directories.
 
 ---
 
-## 📈 Future Plans
-- [ ] Integration with more MCP (Model Context Protocol) tools.
-- [ ] Advanced RAG (Retrieval Augmented Generation) agent templates.
-- [ ] Autonomous coding assistants specialized for various languages.
-
 ## 🤝 Contributions
-Contributions are welcome! Feel free to open issues or submit pull requests.
+All contributions, whether adding new agents or improving existing documentation, are highly encouraged.
 
 ## 📜 License
 This project is licensed under the MIT License.

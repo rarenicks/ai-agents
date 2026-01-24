@@ -11,12 +11,12 @@ def write_email(to: str, subject: str, content: str) -> str:
     # Placeholder response - in real app would send email
     return f"Email sent to {to} with subject '{subject}' and content: {content}"
 
-llm = init_chat_model("openai:gpt-4.1", temperature=0)
-model_with_tools = llm.bind_tools([write_email], tool_choice="any")
+llm = init_chat_model("gpt-4o-mini", temperature=0)
+model_with_tools = llm.bind_tools([write_email], tool_choice="auto")
 
+# Real LLM
 def call_llm(state: MessagesState) -> MessagesState:
     """Run LLM"""
-
     output = model_with_tools.invoke(state["messages"])
     return {"messages": [output]}
 
@@ -47,6 +47,13 @@ workflow.add_node("call_llm", call_llm)
 workflow.add_node("run_tool", run_tool)
 workflow.add_edge(START, "call_llm")
 workflow.add_conditional_edges("call_llm", should_continue, {"run_tool": "run_tool", END: END})
-workflow.add_edge("run_tool", END)
+workflow.add_edge("run_tool", "call_llm")
 
 app = workflow.compile()
+
+if __name__ == "__main__":
+    initial_message = {"role": "user", "content": "Send an email to user@example.com with subject 'Hello' and content 'Welcome to the team!'"}
+    # Stream the output to see what's happening step-by-step
+    for chunk in app.stream({"messages": [initial_message]}, stream_mode="values"):
+        last_msg = chunk["messages"][-1]
+        print(f"[{last_msg.type}]: {last_msg.content}")

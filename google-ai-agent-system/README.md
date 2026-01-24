@@ -40,9 +40,15 @@ graph TD
 - **Model Agnostic**: Supports Google Gemini via Vertex AI/AI Studio or local LLMs (like Llama 3) via **Ollama** and **LiteLLM**.
 - **Enterprise Ready**: Designed to scale from local development to production on Google Cloud Agent Engine.
 
-### 4. Deep Observability
-- **Trace Logging**: Every thought, tool call, and state transition is captured.
-- **Auditable**: Designed to connect with Google Cloud Trace in production.
+### 4. Enterprise Observability & Safety (ADK Plugins)
+- **Native ADK Plugins**: Custom `EnterpriseObservabilityPlugin` intercepts agent lifecycle events for deep tracing.
+- **Policy Enforcement**: `AgentPolicyPlugin` provides dynamic mission control, human-in-the-loop (HITL) intercepts for sensitive tools, and dynamic system instruction injection.
+- **Agent Health**: Native `/health/check` endpoint verifies the readiness and connectivity of every agent in the registry.
+
+### 5. Advanced Runtime Features
+- **MCP Integration**: Full Support for Model Context Protocol (MCP). Discover and call remote enterprise tools securely.
+- **Resumability**: Long-running agent sessions can be paused and resumed using ADK's native `ResumabilityConfig`.
+- **Context Caching**: Optimized for heavy workloads with automated context TTL management.
 
 ## 🛠 System Components
 

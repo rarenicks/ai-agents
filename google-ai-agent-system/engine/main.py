@@ -5,12 +5,16 @@ from engine.agents.supervisor import build_supervisor_team
 from engine.memory.store import MemoryStore
 from google.adk.runners import Runner
 from google.adk.sessions.in_memory_session_service import InMemorySessionService
-from google.adk.apps.app import App
+from google.adk.apps.app import App, ResumabilityConfig
+from google.adk.agents.context_cache_config import ContextCacheConfig
 from google.adk.models.registry import LLMRegistry
 from google.adk.models.lite_llm import LiteLlm
 from google.genai import types
 import os
 from dotenv import load_dotenv
+from observability.monitor import EnterpriseObservabilityPlugin
+from engine.policy import AgentPolicyPlugin
+import time
 
 # Register Ollama support for ADK
 LLMRegistry._register(r"ollama/.*", LiteLlm)
@@ -27,10 +31,16 @@ try:
     # Build the root team
     team_alpha_agent = build_supervisor_team()
     
-    # Create ADK App
+    # Create ADK App with Enterprise Features
     adk_app = App(
         name="Team_Alpha_App",
-        root_agent=team_alpha_agent
+        root_agent=team_alpha_agent,
+        plugins=[
+            EnterpriseObservabilityPlugin(),
+            AgentPolicyPlugin(sensitive_tools=["mcp_read_document"])
+        ],
+        resumability_config=ResumabilityConfig(is_resumable=True),
+        context_cache_config=ContextCacheConfig(ttl_seconds=3600) # 1 hour TTL
     )
     
     # Initialize ADK Runner
@@ -46,6 +56,9 @@ try:
         description="Strategic supervisor that plans and delegates tasks.",
         capabilities=["orchestration", "planning"]
     ))
+    
+    # Add a health check for the team
+    registry.set_health_check("team_alpha", lambda: runner is not None)
     
     print("[Agentspace] ADK Runner initialized with Team Alpha.")
 except Exception as e:
@@ -114,5 +127,11 @@ def health_check():
     return {
         "status": "running", 
         "agents": registry.list_agents(),
-        "runner": "active"
+        "runner": "active",
+        "timestamp": time.time()
     }
+
+@app.get("/agent/health/check")
+async def perform_health_check():
+    results = registry.check_health()
+    return {"results": results, "summary": registry.list_agents()}

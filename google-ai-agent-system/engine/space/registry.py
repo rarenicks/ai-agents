@@ -1,4 +1,5 @@
 from typing import Dict, Callable, Any, List, Optional
+import time
 from dataclasses import dataclass, field
 
 @dataclass
@@ -7,6 +8,8 @@ class AgentMetadata:
     description: str
     capabilities: List[str] = field(default_factory=list)
     version: str = "1.0.0"
+    status: str = "ready" # New field for health status
+    last_checked: float = field(default_factory=time.time)
 
 class AgentRegistry:
     """
@@ -16,6 +19,7 @@ class AgentRegistry:
         self._agents: Dict[str, Callable] = {}
         self._metadata: Dict[str, AgentMetadata] = {}
         self._instances: Dict[str, Any] = {}
+        self._health_checks: Dict[str, Callable[[], bool]] = {}
 
     def register(self, name: str, builder_func: Callable, metadata: Optional[AgentMetadata] = None):
         """Register a new agent with optional metadata."""
@@ -51,6 +55,33 @@ class AgentRegistry:
 
     def list_agents(self):
         return [
-            {"name": name, "description": meta.description}
+            {
+                "id": name, 
+                "name": meta.name, 
+                "description": meta.description, 
+                "status": meta.status,
+                "capabilities": meta.capabilities
+            }
             for name, meta in self._metadata.items()
         ]
+
+    def update_status(self, name: str, status: str):
+        if name in self._metadata:
+            self._metadata[name].status = status
+            self._metadata[name].last_checked = time.time()
+            
+    def set_health_check(self, name: str, check_func: Callable[[], bool]):
+        self._health_checks[name] = check_func
+
+    def check_health(self):
+        results = {}
+        for name, check_func in self._health_checks.items():
+            try:
+                is_healthy = check_func()
+                status = "ready" if is_healthy else "degraded"
+                self.update_status(name, status)
+                results[name] = status
+            except Exception:
+                self.update_status(name, "error")
+                results[name] = "error"
+        return results

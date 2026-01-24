@@ -1,45 +1,54 @@
 import logging
 import time
-from langchain_core.callbacks import BaseCallbackHandler
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
+from google.adk.plugins.base_plugin import BasePlugin
+from google.adk.agents.base_agent import BaseAgent
+from google.adk.agents.callback_context import CallbackContext
+from google.adk.tools.base_tool import BaseTool
+from google.adk.tools.tool_context import ToolContext
+from google.adk.models.llm_response import LlmResponse
+from google.adk.models.llm_request import LlmRequest
 
-# Configure basic logging
+# Configure basic logging to file
 logging.basicConfig(
     filename='agent_trace.log',
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 
-logger = logging.getLogger("AgentObservability")
+logger = logging.getLogger("EnterpriseMonitor")
 
-class ObservabilityCallbackHandler(BaseCallbackHandler):
+class EnterpriseObservabilityPlugin(BasePlugin):
     """
-    Custom Callback Handler to simulate Cloud Trace and Logging.
-    In a real scenario, this would push data to Google Cloud Trace/Logging.
+    ADK Plugin for deep observability and tracing.
+    Mimics Google Cloud Operations suite by logging critical agent lifecycle events.
     """
-    def on_llm_start(self, serialized: Dict[str, Any], prompts: List[str], **kwargs: Any) -> None:
-        logger.info(f"event=LLM_START model={serialized.get('kwargs', {}).get('model_name')} prompts={len(prompts)}")
+    def __init__(self):
+        super().__init__(name="enterprise_monitor")
 
-    def on_llm_end(self, response: Any, **kwargs: Any) -> None:
-        logger.info(f"event=LLM_END")
+    async def before_agent_callback(self, *, agent: BaseAgent, callback_context: CallbackContext) -> Optional[Any]:
+        logger.info(f"[Agent:{agent.name}] Invocation started. Session: {callback_context.session.id}")
+        return None
 
-    def on_tool_start(self, serialized: Dict[str, Any], input_str: str, **kwargs: Any) -> None:
-        logger.info(f"event=TOOL_START tool={serialized.get('name')} input={input_str}")
+    async def after_agent_callback(self, *, agent: BaseAgent, callback_context: CallbackContext) -> Optional[Any]:
+        logger.info(f"[Agent:{agent.name}] Invocation completed.")
+        return None
 
-    def on_tool_end(self, output: Any, **kwargs: Any) -> None:
-        try:
-            if isinstance(output, str):
-                log_msg = output[:50]
-            elif hasattr(output, 'content'):
-                log_msg = str(output.content)[:50]
-            else:
-                log_msg = str(output)[:50]
-            logger.info(f"event=TOOL_END output={log_msg}...")
-        except Exception as e:
-            logger.error(f"event=TOOL_END error_parsing_output={e}")
+    async def before_tool_callback(self, *, tool: BaseTool, tool_args: Dict[str, Any], tool_context: ToolContext) -> Optional[Dict]:
+        logger.info(f"[Tool:{tool.name}] Starting execution with args: {tool_args}")
+        return None
 
-    def on_chain_start(self, serialized: Dict[str, Any], inputs: Dict[str, Any], **kwargs: Any) -> None:
-        logger.info(f"event=CHAIN_START inputs={list(inputs.keys())}")
+    async def after_tool_callback(self, *, tool: BaseTool, tool_args: Dict[str, Any], tool_context: ToolContext, result: Dict) -> Optional[Dict]:
+        # Truncate result for logs
+        res_str = str(result)[:200]
+        logger.info(f"[Tool:{tool.name}] Completed. Result: {res_str}...")
+        return None
 
-    def on_chain_end(self, outputs: Dict[str, Any], **kwargs: Any) -> None:
-        logger.info(f"event=CHAIN_END")
+    async def after_model_callback(self, *, callback_context: CallbackContext, llm_response: LlmResponse) -> Optional[LlmResponse]:
+        usage = llm_response.usage_metadata if hasattr(llm_response, 'usage_metadata') else "N/A"
+        logger.info(f"[LLM] Model responded. Usage: {usage}")
+        return None
+
+    async def on_tool_error_callback(self, *, tool: BaseTool, tool_args: Dict[str, Any], tool_context: ToolContext, error: Exception) -> Optional[Dict]:
+        logger.error(f"[Tool:{tool.name}] FAILED with error: {str(error)}")
+        return None

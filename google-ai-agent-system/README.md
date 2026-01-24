@@ -15,7 +15,8 @@ Navigate the platform with our specialized guides:
 -   [**🏗 Architecture**](docs/ARCHITECTURE.md): Deep dive into the Supervisor Pattern, Registry design, and internal communication protocols.
 -   [**🛡 Plugins & Safety**](docs/PLUGINS.md): Learn how ADK Plugins handle observability, trace logging, and corporate security policies.
 -   [**🌐 Tools & MCP**](docs/TOOLS_AND_MCP.md): Discover the hybrid tool system combining local Python functions with remote **Model Context Protocol** services.
--   [**🏥 Health & Ops**](docs/HEALTH_AND_OPS.md): Setup instructions for health monitoring, system diagnostics, and performance optimization (caching & resumability).
+-   [**👤 Identity & RBAC**](docs/IDENTITY.md): Learn how the platform manages user identities and enforces permission-based access control.
+-   [**🏥 Health & Ops**](docs/HEALTH_AND_OPS.md): Setup instructions for health monitoring, system diagnostics, and performance optimization.
 
 ---
 

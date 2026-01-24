@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from typing import Optional
 from engine.space.registry import AgentRegistry, AgentMetadata
 from engine.agents.supervisor import build_supervisor_team
 from engine.memory.store import MemoryStore
@@ -69,6 +70,7 @@ except Exception as e:
 class ChatRequest(BaseModel):
     session_id: str
     message: str
+    user_id: Optional[str] = "user_002" # Default to guest for safety
 
 @app.post("/agent/chat")
 async def chat(request: ChatRequest):
@@ -87,7 +89,7 @@ async def chat(request: ChatRequest):
         
         # Run the agent team within the ADK session
         async for event in runner.run_async(
-            user_id="default_user",
+            user_id=request.user_id,
             session_id=request.session_id,
             new_message=new_msg
         ):

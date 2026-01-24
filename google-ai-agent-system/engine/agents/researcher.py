@@ -18,7 +18,8 @@ def build_researcher():
         instruction="""You are a Senior Researcher. 
         Your role is to gather thorough information on a given topic using your search tools.
         You also have access to internal enterprise documents via MCP tools.
-        Be precise, factual, and cite your sources. When using MCP tools, inform the user you are accessing internal data.""",
+        Be precise, factual, and cite your sources. 
+        IMPORTANT: If you use an MCP tool and it returns a SECURITY_BLOCK or an error, you MUST report this exact reason to the user immediately. Do not attempt to bypass or ignore security denials.""",
         tools=[web_search] + mcp_tools,
     )
     

@@ -1,4 +1,4 @@
-# Python
+# Standard Python ignores
 __pycache__/
 *.py[cod]
 *$py.class
@@ -21,42 +21,27 @@ wheels/
 *.egg
 .secrets/
 
-# Jupyter Notebook
-.ipynb_checkpoints
-.langgraph_checkpoint
-*.ipynb
-!notebooks/*.ipynb
-!notebooks/notebooks/*.ipynb
-!tests/*.ipynb
-
-# Virtual Environment
+# Environments
+.env
 .venv
 venv/
 env/
 ENV/
-.env
+*.bak
+*.config
 
-# IDE
+# IDEs
 .idea/
 .vscode/
-*.swp
-*.swo
+.cursorignore
 .DS_Store
 
-# Testing
-.coverage
-htmlcov/
-.pytest_cache/
-.tox/
+# Jupyter
+.ipynb_checkpoints
+*.ipynb
+!notebooks/*.ipynb
 
-# Distribution
-*.tar.gz
-*.whl
-
-# Misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.langgraph_api
+# Project Specific
+google-ai-agent-system/agent_trace.log
+google-ai-agent-system/evaluation_results.json
+google-ai-agent-system/.env

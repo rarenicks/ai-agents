@@ -6,6 +6,7 @@ from engine.agents.supervisor import build_supervisor_team
 from engine.memory.store import MemoryStore
 from google.adk.runners import Runner
 from google.adk.sessions.in_memory_session_service import InMemorySessionService
+from google.adk.artifacts.in_memory_artifact_service import InMemoryArtifactService
 from google.adk.apps.app import App, ResumabilityConfig
 from google.adk.agents.context_cache_config import ContextCacheConfig
 from google.adk.models.registry import LLMRegistry
@@ -25,6 +26,7 @@ load_dotenv()
 app = FastAPI(title="Google AI Agent System Engine")
 memory = MemoryStore()
 session_service = InMemorySessionService()
+artifact_service = InMemoryArtifactService()
 registry = AgentRegistry()
 
 # ADK Core Components
@@ -48,6 +50,7 @@ try:
     runner = Runner(
         app=adk_app,
         session_service=session_service,
+        artifact_service=artifact_service,
         auto_create_session=True
     )
     
@@ -55,7 +58,7 @@ try:
     registry.register("team_alpha", lambda: team_alpha_agent, AgentMetadata(
         name="Team Alpha Orchestrator",
         description="Strategic supervisor that plans and delegates tasks.",
-        capabilities=["orchestration", "planning"]
+        capabilities=["orchestration", "planning", "code_execution"]
     ))
     
     # Add a health check for the team

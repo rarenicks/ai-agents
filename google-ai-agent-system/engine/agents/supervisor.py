@@ -2,6 +2,7 @@ import os
 from google.adk.agents.llm_agent import Agent as LlmAgent
 from engine.agents.researcher import build_researcher
 from engine.agents.writer import build_writer
+from engine.agents.analyst import build_data_analyst
 
 def build_supervisor_team():
     from engine.llm_factory import get_adk_model_name
@@ -10,6 +11,7 @@ def build_supervisor_team():
     # 1. Initialize specialized agents
     researcher_agent = build_researcher()
     writer_agent = build_writer()
+    analyst_agent = build_data_analyst()
     
     # 2. Build the Coordinator Agent (Supervisor)
     # The ADK Coordinator pattern uses an LlmAgent with sub_agents.
@@ -21,10 +23,11 @@ def build_supervisor_team():
         Your goal is to fulfill user requests by delegating to specialized agents:
         - Use the 'Senior_Researcher' to gather facts and search the web.
         - Use the 'Professional_Tech_Writer' to format research results into high-quality documents.
+        - Use the 'Data_Analyst' for complex calculations, python code execution, and data processing.
         
         Analyze the request, transfer to the appropriate agent, and provide a final synthesized answer when all information gathered.
         When you need to transfer, use the exact internal names provided.""",
-        sub_agents=[researcher_agent, writer_agent]
+        sub_agents=[researcher_agent, writer_agent, analyst_agent]
     )
     
     return coordinator

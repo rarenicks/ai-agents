@@ -13,6 +13,7 @@ Welcome to the **Google AI Agent System**, a professional-grade reference implem
 Navigate the platform with our specialized guides:
 
 -   [**🏗 Architecture**](docs/ARCHITECTURE.md): Deep dive into the Supervisor Pattern, Registry design, and internal communication protocols.
+-   [**🤝 Coordination & Code**](docs/COORDINATION.md): Learn how the Supervisor delegates tasks to specialized agents (Researcher, Writer, Analyst) and enables native Python code execution.
 -   [**🛡 Plugins & Safety**](docs/PLUGINS.md): Learn how ADK Plugins handle observability, trace logging, and corporate security policies.
 -   [**🌐 Tools & MCP**](docs/TOOLS_AND_MCP.md): Discover the hybrid tool system combining local Python functions with remote **Model Context Protocol** services.
 -   [**👤 Identity & RBAC**](docs/IDENTITY.md): Learn how the platform manages user identities and enforces permission-based access control.

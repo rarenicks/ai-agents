@@ -1,41 +1,32 @@
-# ai-agents (Master Codebank) 🚀
+# AI Agent Blueprint Bank 🚀
 
-Welcome to the **ai-agents** master repository. This is a curated "Golden Repo" designed for production-grade agent creation across all major providers and frameworks.
+Welcome to the **AI Agent Blueprint Bank**. This repository is a "Golden Single Repo" for production-grade agent architectures across all major providers (Google, CrewAI, AutoGen, Semantic Kernel, etc.).
 
-The repository is organized into two primary sections: **Blueprints** (Product-ready templates) and **Labs** (Educational and experimental content).
+Each blueprint in this bank is designed for stability, scalability, and enterprise readiness, following best practices for configuration, observability, and deployment.
 
 ---
 
-## 🏗 Blueprints (`blueprints/`)
-*High-tier, enterprise-grade architectures designed for stability, scalability, and production deployment.*
+## 🏗 Available Blueprints
 
 ### 1. Google AI Agent System (ADK)
-- **Directory**: `blueprints/google-ai-agent-system/`
-- **Architecture**: Enterprise-ready multi-agent platform using Google ADK.
-- **Features**: Supervisor pattern, RBAC, MCP native, Deep Observability.
-- [Architecture Docs](blueprints/google-ai-agent-system/docs/ARCHITECTURE.md)
+- **Framework**: Google Agent Development Kit (ADK)
+- **Directory**: `google-ai-agent-system/`
+- **Focus**: Supervisor pattern, RBAC, MCP native, Deep Observability.
+- [Architecture Docs](google-ai-agent-system/docs/ARCHITECTURE.md) | [Tools Info](google-ai-agent-system/docs/TOOLS_AND_MCP.md)
 
 ### 2. CrewAI Production Blueprint
-- **Directory**: `blueprints/crewai-production-blueprint/`
-- **Architecture**: YAML-driven, decorator-based CrewAI system with FastAPI.
-- **Features**: YAML-first config, Microservices ready, Custom Enterprise Tools.
-- [Blueprint Docs](blueprints/crewai-production-blueprint/README.md)
+- **Framework**: CrewAI
+- **Directory**: `crewai-production-blueprint/`
+- **Focus**: YAML-driven config, Microservices ready (FastAPI), Custom Enterprise Tools.
+- [Blueprint Overview](crewai-production-blueprint/README.md)
 
----
+### 3. AutoGen Production Blueprint (Coming Soon)
+- **Framework**: Microsoft AutoGen
+- **Focus**: Multi-agent orchestration, sandboxed code execution, and modular state flows.
 
-## 🧪 Labs (`labs/`)
-*Hands-on workshops, tutorials, and foundational learning paths for various agent frameworks.*
-
-### 1. LangGraph Workshop
-- **Directory**: `labs/langgraph-workshop/`
-- **Content**: Build an e-mail assistant from scratch using LangGraph. Includes human-in-the-loop and memory patterns.
-
-### 2. Framework Foundations
-- **CrewAI Basics**: [labs/crewai-basics/](labs/crewai-basics/) - Content creation and multi-agent coordination.
-- **LangChain Basics**: [labs/langchain-basics/](labs/langchain-basics/) - Fundamental tool-calling and reasoning chains.
-
-### 3. Courses & Research
-- **AI Courses**: [labs/courses/](labs/courses/) - Collected materials and notes from various AI/Agentic courses.
+### 4. Semantic Kernel Blueprint (Coming Soon)
+- **Framework**: Microsoft Semantic Kernel
+- **Focus**: Plugin-based design, Kernel isolation, and RAG integration.
 
 ---
 
@@ -47,17 +38,21 @@ The repository is organized into two primary sections: **Blueprints** (Product-r
     cd ai-agents
     ```
 
-2. **Choose a Blueprint**:
+2. **Deploy a Blueprint**:
+    Each blueprint is a self-contained production environment. Navigate to the blueprint of your choice and follow its specific `README.md`.
     ```bash
-    cd blueprints/crewai-production-blueprint
+    cd crewai-production-blueprint
     chmod +x start.sh
     ./start.sh
     ```
 
 ---
 
+## 🎯 Our Mission
+To provide the definitive "Golden Standard" for agentic workflows. Every blueprint here is more than just a tutorial—it's a foundation you can build your enterprise products on.
+
 ## 🤝 Contributions
-All contributions, whether adding new blueprints or improving existing labs, are highly encouraged.
+We welcome contributions that add new high-tier architectures or improve the robustness of existing ones.
 
 ## 📜 License
 This project is licensed under the MIT License.

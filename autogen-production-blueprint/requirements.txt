@@ -1,0 +1,7 @@
+pyautogen<0.3.0
+fastapi
+uvicorn
+python-dotenv
+pydantic
+pydantic-settings
+rich

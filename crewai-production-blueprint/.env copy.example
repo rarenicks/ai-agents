@@ -1,0 +1,3 @@
+OPENAI_API_KEY=your_openai_api_key_here
+# OPENAI_MODEL_NAME=gpt-4-turbo
+SERPER_API_KEY=9016acb5d8bfe14eeaf172dd6d52f697827580c9bb1b341824e35ab450b50351

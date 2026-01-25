@@ -1,0 +1,19 @@
+research_task:
+  description: >-
+    Conduct a thorough research on the following topic: {topic}.
+    Identify key players, recent breakthroughs, and future trends.
+    Ensure all information is verified and properly sourced.
+  expected_output: >-
+    A detailed research document including a summary, list of key findings, 
+    and links to sources or references.
+  agent: researcher
+
+reporting_task:
+  description: >-
+    Using the research provided, create a professional technical report on {topic}.
+    Structure the report with an Executive Summary, Detailed Analysis, and Conclusion.
+    The tone should be professional and suitable for a business-technical audience.
+  expected_output: >-
+    A formatted markdown report that covers all major aspects of the research.
+  agent: writer
+  context: [research_task]

@@ -2,20 +2,21 @@
 
 Welcome to the **ai-agents** codebank. This repository is a curated collection of AI agent implementations, ranging from introductory tutorials to enterprise-grade autonomous systems.
 
-## 🏆 Featured Project: Google AI Agent System (ADK)
+## 🚀 Production Blueprints (Golden Templates)
+
+These are our highest-tier implementations, designed for stability, scalability, and production deployment.
+
+### 1. Google AI Agent System (ADK)
 **Directory: `google-ai-agent-system/`**
+- **Architecture**: Enterprise-ready multi-agent platform using Google ADK.
+- **Features**: Supervisor pattern, RBAC, MCP native, Deep Observability.
+- [Architecture](google-ai-agent-system/docs/ARCHITECTURE.md) | [Tools](google-ai-agent-system/docs/TOOLS_AND_MCP.md)
 
-This is our flagship implementation of an enterprise-ready multi-agent platform using the **Google Agent Development Kit (ADK)**. 
-
-### 🌟 Key Capabilities
-- **Supervisor Pattern**: High-level orchestration between specialized Researcher and Writer agents.
-- **Enterprise Safety**: Custom **ADK Plugins** for policy enforcement and safety guardrails.
-- **Deep Observability**: Real-time trace logging of thoughts, tool calls, and model metadata.
-- **MCP Protocol**: Native support for **Model Context Protocol** to discover and call remote enterprise tools.
-- **Ops Ready**: Built-in health checks, context caching, and session resumability.
-
-**Documentation Quick Links:**
-[🏗 Architecture](google-ai-agent-system/docs/ARCHITECTURE.md) | [🛡 Plugins](google-ai-agent-system/docs/PLUGINS.md) | [🌐 Tools & MCP](google-ai-agent-system/docs/TOOLS_AND_MCP.md) | [🏥 Health & Ops](google-ai-agent-system/docs/HEALTH_AND_OPS.md)
+### 2. CrewAI Production Blueprint
+**Directory: `crewai-production-blueprint/`**
+- **Architecture**: YAML-driven, decorator-based CrewAI system with FastAPI.
+- **Features**: YAML-first config, Microservices ready, Custom Enterprise Tools, Standardized Logging.
+- [Blueprint Overview](crewai-production-blueprint/README.md)
 
 ---
 
@@ -23,13 +24,11 @@ This is our flagship implementation of an enterprise-ready multi-agent platform 
 
 ### 1. Agents From Scratch (LangGraph Workshop)
 **Directory: `notebooks/`, `src/email_assistant/`**
-A comprehensive guide to building agents from first principles using LangGraph, building up to an "ambient" agent that manages email via the Gmail API.
+A comprehensive guide to building agents from first principles using LangGraph.
 
-### 2. Crew AI Implementations
-- **[Basic Crew AI Tutorial](basic-crew-ai-agent-tutorial)**: Introduction to task-based multi-agent coordination for content creation.
-
-### 3. LangChain Agent Tutorials
-- **[Basic LangChain Tutorial](basic-langchain-agent-tutorial)**: Learning the fundamentals of tool-calling and reasoning chains.
+### 2. Framework Tutorials
+- **[Basic Crew AI Tutorial](basic-crew-ai-agent-tutorial)**: Introduction to multi-agent coordination.
+- **[Basic LangChain Tutorial](basic-langchain-agent-tutorial)**: Fundamentals of tool-calling.
 
 ---
 

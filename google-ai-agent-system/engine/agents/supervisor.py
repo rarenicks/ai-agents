@@ -1,5 +1,6 @@
 import os
 from google.adk.agents.llm_agent import Agent as LlmAgent
+from engine.agents.researcher import build_researcher
 from engine.agents.writer import build_writer
 from engine.agents.analyst import build_data_analyst
 from tools.a2a_tools import open_a2a_communication, list_a2a_directory

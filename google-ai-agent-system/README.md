@@ -18,6 +18,7 @@ Navigate the platform with our specialized guides:
 -   [**🌐 Tools & MCP**](docs/TOOLS_AND_MCP.md): Discover the hybrid tool system combining local Python functions with remote **Model Context Protocol** services.
 -   [**👤 Identity & RBAC**](docs/IDENTITY.md): Learn how the platform manages user identities and enforces permission-based access control.
 -   [**🏥 Health & Ops**](docs/HEALTH_AND_OPS.md): Setup instructions for health monitoring, system diagnostics, and performance optimization.
+-   [**🏗 Infrastructure (Terraform)**](terraform/README.md): Automated deployment configuration for Google Cloud Platform.
 
 ---
 

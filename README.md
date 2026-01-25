@@ -1,38 +1,45 @@
-# ai-agents (Enterprise Codebank)
+# ai-agents (Master Codebank) 🚀
 
-Welcome to the **ai-agents** codebank. This repository is a curated collection of AI agent implementations, ranging from introductory tutorials to enterprise-grade autonomous systems.
+Welcome to the **ai-agents** master repository. This is a curated "Golden Repo" designed for production-grade agent creation across all major providers and frameworks.
 
-## 🚀 Production Blueprints (Golden Templates)
+The repository is organized into two primary sections: **Blueprints** (Product-ready templates) and **Labs** (Educational and experimental content).
 
-These are our highest-tier implementations, designed for stability, scalability, and production deployment.
+---
+
+## 🏗 Blueprints (`blueprints/`)
+*High-tier, enterprise-grade architectures designed for stability, scalability, and production deployment.*
 
 ### 1. Google AI Agent System (ADK)
-**Directory: `google-ai-agent-system/`**
+- **Directory**: `blueprints/google-ai-agent-system/`
 - **Architecture**: Enterprise-ready multi-agent platform using Google ADK.
 - **Features**: Supervisor pattern, RBAC, MCP native, Deep Observability.
-- [Architecture](google-ai-agent-system/docs/ARCHITECTURE.md) | [Tools](google-ai-agent-system/docs/TOOLS_AND_MCP.md)
+- [Architecture Docs](blueprints/google-ai-agent-system/docs/ARCHITECTURE.md)
 
 ### 2. CrewAI Production Blueprint
-**Directory: `crewai-production-blueprint/`**
+- **Directory**: `blueprints/crewai-production-blueprint/`
 - **Architecture**: YAML-driven, decorator-based CrewAI system with FastAPI.
-- **Features**: YAML-first config, Microservices ready, Custom Enterprise Tools, Standardized Logging.
-- [Blueprint Overview](crewai-production-blueprint/README.md)
+- **Features**: YAML-first config, Microservices ready, Custom Enterprise Tools.
+- [Blueprint Docs](blueprints/crewai-production-blueprint/README.md)
 
 ---
 
-## 📚 Educational Implementations
+## 🧪 Labs (`labs/`)
+*Hands-on workshops, tutorials, and foundational learning paths for various agent frameworks.*
 
-### 1. Agents From Scratch (LangGraph Workshop)
-**Directory: `notebooks/`, `src/email_assistant/`**
-A comprehensive guide to building agents from first principles using LangGraph.
+### 1. LangGraph Workshop
+- **Directory**: `labs/langgraph-workshop/`
+- **Content**: Build an e-mail assistant from scratch using LangGraph. Includes human-in-the-loop and memory patterns.
 
-### 2. Framework Tutorials
-- **[Basic Crew AI Tutorial](basic-crew-ai-agent-tutorial)**: Introduction to multi-agent coordination.
-- **[Basic LangChain Tutorial](basic-langchain-agent-tutorial)**: Fundamentals of tool-calling.
+### 2. Framework Foundations
+- **CrewAI Basics**: [labs/crewai-basics/](labs/crewai-basics/) - Content creation and multi-agent coordination.
+- **LangChain Basics**: [labs/langchain-basics/](labs/langchain-basics/) - Fundamental tool-calling and reasoning chains.
+
+### 3. Courses & Research
+- **AI Courses**: [labs/courses/](labs/courses/) - Collected materials and notes from various AI/Agentic courses.
 
 ---
 
-## 🛠 Getting Started
+## 🚀 Getting Started
 
 1. **Clone the repository**:
     ```bash
@@ -40,17 +47,17 @@ A comprehensive guide to building agents from first principles using LangGraph.
     cd ai-agents
     ```
 
-2. **Run the Enterprise System**:
+2. **Choose a Blueprint**:
     ```bash
-    cd google-ai-agent-system
+    cd blueprints/crewai-production-blueprint
+    chmod +x start.sh
     ./start.sh
-    ./venv/bin/python scripts/system_health.py # Run diagnostics
     ```
 
 ---
 
 ## 🤝 Contributions
-All contributions, whether adding new agents or improving existing documentation, are highly encouraged.
+All contributions, whether adding new blueprints or improving existing labs, are highly encouraged.
 
 ## 📜 License
 This project is licensed under the MIT License.

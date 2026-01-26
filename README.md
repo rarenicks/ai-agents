@@ -20,13 +20,17 @@ Each blueprint in this bank is designed for stability, scalability, and enterpri
 - **Focus**: YAML-driven config, Microservices ready (FastAPI), Custom Enterprise Tools.
 - [Blueprint Overview](crewai-production-blueprint/README.md)
 
-### 3. AutoGen Production Blueprint (Coming Soon)
+### 3. AutoGen Production Blueprint
 - **Framework**: Microsoft AutoGen
+- **Directory**: `autogen-production-blueprint/`
 - **Focus**: Multi-agent orchestration, sandboxed code execution, and modular state flows.
+- [Blueprint Overview](autogen-production-blueprint/README.md)
 
-### 4. Semantic Kernel Blueprint (Coming Soon)
+### 4. Semantic Kernel Blueprint
 - **Framework**: Microsoft Semantic Kernel
-- **Focus**: Plugin-based design, Kernel isolation, and RAG integration.
+- **Directory**: `semantic-kernel-production-blueprint/`
+- **Focus**: Plugin-based design, Kernel isolation, and Agent Group Chat orchestration.
+- [Blueprint Overview](semantic-kernel-production-blueprint/README.md)
 
 ---
 

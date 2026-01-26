@@ -40,7 +40,26 @@ The blueprint is organized into specialized layers:
    venv/bin/uvicorn api.main:app --reload
    ```
 
-## 🛠 Project Structure
+## ☁️ Deploy to Azure
+
+The blueprint includes production-ready **Infrastructure as Code (Bicep)** for deploying to **Azure Container Apps** (ACA).
+
+### Automated Deployment (CLI)
+1. **Login to Azure**: `az login`
+2. **Run Deployment**:
+   ```bash
+   chmod +x scripts/deploy_azure.sh
+   ./scripts/deploy_azure.sh
+   ```
+
+## 🧹 Cleanup (Absolute Zero Cost)
+
+To ensure no resources remain and stop all charges, run the cleanup script:
+```bash
+chmod +x scripts/cleanup_azure.sh
+./scripts/cleanup_azure.sh
+```
+This will delete the Resource Group and all associated resources.
 
 ```text
 autogen-production-blueprint/

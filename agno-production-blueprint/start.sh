@@ -20,9 +20,10 @@ pip install -r requirements.txt
 if [ ! -f ".env" ]; then
     echo "Creating .env file..."
     cat > .env << EOL
-OPENAI_API_KEY=$(grep OPENAI_API_KEY ../.env | cut -d '=' -f2)
+OPENAI_API_KEY=
 OPENAI_MODEL_NAME=gpt-4o-mini
 EOL
+    echo "Please update .env with your API keys."
 fi
 
 echo "Setup complete!"

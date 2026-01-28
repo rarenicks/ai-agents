@@ -1,0 +1,9 @@
+llama-index
+llama-index-llms-openai
+llama-index-embeddings-openai
+fastapi
+uvicorn
+python-dotenv
+pydantic-settings
+rich
+httpx

@@ -60,6 +60,22 @@ Each blueprint in this bank is designed for stability, scalability, and enterpri
 
 ---
 
+### 7. LangGraph Production Blueprint
+- **Framework**: LangGraph
+- **Directory**: `langgraph-production-blueprint/`
+- **Focus**: Stateful, multi-agent cyclic workflows with SQLite persistence and LangSmith tracing.
+- [Blueprint Overview](langgraph-production-blueprint/README.md)
+
+---
+
+### 8. LlamaIndex Production Blueprint
+- **Framework**: LlamaIndex
+- **Directory**: `llamaindex-production-blueprint/`
+- **Focus**: Data-augmented agents (RAG) using the ReAct pattern for ground-truth reasoning.
+- [Blueprint Overview](llamaindex-production-blueprint/README.md)
+
+---
+
 ## 🎯 Our Mission
 To provide the definitive "Golden Standard" for agentic workflows. Every blueprint here is more than just a tutorial—it's a foundation you can build your enterprise products on.
 

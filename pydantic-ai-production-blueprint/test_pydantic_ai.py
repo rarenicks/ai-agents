@@ -1,10 +1,15 @@
 import asyncio
 import logfire
+from logfire import AdvancedOptions
 from src.agents.support_agent import support_agent, SupportDeps
 from config.settings import settings
 
 # Configure logfire for the test
-logfire.configure()
+logfire.configure(
+    service_name="ai-agents",
+    token=settings.LOGFIRE_TOKEN,
+    advanced=AdvancedOptions(base_url=settings.LOGFIRE_BASE_URL)
+)
 
 async def main():
     print(f"Testing PydanticAI with model: {settings.OPENAI_MODEL_NAME}")

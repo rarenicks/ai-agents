@@ -1,4 +1,5 @@
 import logfire
+from logfire import AdvancedOptions
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from src.agents.support_agent import support_agent, SupportDeps
@@ -12,10 +13,11 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Initialize Logfire
-if settings.LOGFIRE_TOKEN:
-    logfire.configure(token=settings.LOGFIRE_TOKEN)
-else:
-    logfire.configure() # Open telemetry / console logging fallback
+logfire.configure(
+    service_name="ai-agents",
+    token=settings.LOGFIRE_TOKEN,
+    advanced=AdvancedOptions(base_url=settings.LOGFIRE_BASE_URL)
+)
 
 app = FastAPI(title="PydanticAI Production API", version="1.0.0")
 logfire.instrument_fastapi(app)

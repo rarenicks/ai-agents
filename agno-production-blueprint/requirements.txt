@@ -1,0 +1,11 @@
+agno
+openai
+fastapi
+uvicorn
+python-dotenv
+pydantic-settings
+duckduckgo-search
+rich
+httpx
+sqlalchemy
+streamlit

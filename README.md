@@ -76,6 +76,14 @@ Each blueprint in this bank is designed for stability, scalability, and enterpri
 
 ---
 
+### 9. Agno Production Blueprint
+- **Framework**: Agno (formerly Phidata)
+- **Directory**: `agno-production-blueprint/`
+- **Focus**: Database-first agents with persistent session storage, tool-calling, and Streamlit UI.
+- [Blueprint Overview](agno-production-blueprint/README.md)
+
+---
+
 ## 🎯 Our Mission
 To provide the definitive "Golden Standard" for agentic workflows. Every blueprint here is more than just a tutorial—it's a foundation you can build your enterprise products on.
 

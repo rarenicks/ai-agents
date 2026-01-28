@@ -20,13 +20,19 @@ Each blueprint in this bank is designed for stability, scalability, and enterpri
 - **Focus**: YAML-driven config, Microservices ready (FastAPI), Custom Enterprise Tools.
 - [Blueprint Overview](crewai-production-blueprint/README.md)
 
-### 3. AutoGen Production Blueprint
+### 3. OpenAI Agent SDK
+- **Framework**: OpenAI Agent SDK
+- **Directory**: `openai-agents-production-blueprint/`
+- **Focus**: The official SDK for production multi-agent systems, featuring native handoffs and deep Azure integration.
+- [Blueprint Overview](openai-agents-production-blueprint/README.md)
+
+### 4. AutoGen Production Blueprint
 - **Framework**: Microsoft AutoGen
 - **Directory**: `autogen-production-blueprint/`
 - **Focus**: Multi-agent orchestration, sandboxed code execution, and modular state flows.
 - [Blueprint Overview](autogen-production-blueprint/README.md)
 
-### 4. Semantic Kernel Blueprint
+### 5. Semantic Kernel Blueprint
 - **Framework**: Microsoft Semantic Kernel
 - **Directory**: `semantic-kernel-production-blueprint/`
 - **Focus**: Plugin-based design, Kernel isolation, and Agent Group Chat orchestration.

@@ -1,0 +1,9 @@
+# OpenAI Agent SDK Production Blueprint
+openai-agents
+openai
+fastapi
+uvicorn
+python-dotenv
+pydantic
+pydantic-settings
+rich

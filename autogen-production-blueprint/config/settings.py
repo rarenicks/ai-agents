@@ -21,7 +21,7 @@ class Settings:
         config = {
             "cache_seed": 42,
             "temperature": 0,
-        }
+         }
         
         if self.PROVIDER == "azure_openai":
             config["config_list"] = [

@@ -1,0 +1,10 @@
+pydantic-ai[logfire]
+logfire[fastapi]
+pydantic
+openai
+fastapi
+uvicorn
+python-dotenv
+pydantic-settings
+rich
+httpx

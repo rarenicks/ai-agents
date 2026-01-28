@@ -32,11 +32,13 @@ Each blueprint in this bank is designed for stability, scalability, and enterpri
 - **Focus**: Multi-agent orchestration, sandboxed code execution, and modular state flows.
 - [Blueprint Overview](autogen-production-blueprint/README.md)
 
-### 5. Semantic Kernel Blueprint
-- **Framework**: Microsoft Semantic Kernel
-- **Directory**: `semantic-kernel-production-blueprint/`
-- **Focus**: Plugin-based design, Kernel isolation, and Agent Group Chat orchestration.
-- [Blueprint Overview](semantic-kernel-production-blueprint/README.md)
+### 5. PydanticAI Production Blueprint
+- **Framework**: PydanticAI
+- **Directory**: `pydantic-ai-production-blueprint/`
+- **Focus**: Type-safe agents with structured outputs and Logfire observability.
+- [Blueprint Overview](pydantic-ai-production-blueprint/README.md)
+
+### 6. Semantic Kernel Blueprint
 
 ---
 

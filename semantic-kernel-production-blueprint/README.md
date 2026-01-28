@@ -1,64 +1,78 @@
-# Semantic Kernel Production Blueprint 🔮
+# Semantic Kernel Production Blueprint
 
-This is a production-grade template for building multi-agent systems using **Microsoft Semantic Kernel (Python)**. It follows enterprise design patterns, emphasizing modular plugins, kernel isolation, and robust orchestration.
+> **The Enterprise Integration Framework**
 
-## 🏗 Architecture
+This blueprint showcases Microsoft's **Semantic Kernel (SK)**. Unlike other frameworks that try to "be the agent," Semantic Kernel is designed to integrate LLMs into **existing enterprise codebases**. It treats prompts as "Semantic Functions" alongside native code ("Native Functions").
 
-The blueprint is organized into specialized layers:
+---
 
-- **`config/`**: Configuration for model providers (Ollama, OpenAI, Azure).
-- **`src/agents/`**: Modular agent definitions using the SK Agent Framework.
-- **`src/plugins/`**: Native and Semantic plugins (tools) for agents.
-- **`src/orchestration/`**: Multi-agent coordination logic (Agent Group Chat).
-- **`api/`**: FastAPI implementation for serving agent workflows.
-- **`scripts/`**: Utilities for health checks and local model management.
+## 📚 Educational Guide: Understanding Semantic Kernel
 
-## 🌟 Key Features
+### 🧠 Core Philosophy
+SK envisions a world where your app interacts with "Plugins".
+- **Plugins**: Bundles of capabilities (e.g., a "MathPlugin", an "EmailPlugin").
+- **Kernel**: The central processor that routes requests to the right plugin.
+- **Planners**: The "Agent" part. A Planner takes a user goal (e.g., "Email the sum of 5+5 to Bob") and automatically chains the MathPlugin and EmailPlugin together.
 
-- **Hybrid Model Support**: Seamlessly switch between **Ollama**, **Standard OpenAI**, and **Azure OpenAI**.
-- **Agent Group Chat**: Production-grade multi-agent orchestration with termination and selection strategies.
-- **Enterprise Plugins**: Clean separation of concerns using the Semantic Kernel Plugin architecture.
-- **Async First**: Fully asynchronous implementation for high-performance agentic workflows.
-- **Observability**: Structured for integration with Azure Monitor or standard logging.
+### 🔑 Key Concepts in this Blueprint
+1.  **The Kernel**: In `src/kernel_setup.py`, we initialize the Kernel and attach the OpenAI Service. This `kernel` object is passed around your app.
+2.  **Plugins as Classes**: Look at `src/plugins/MathPlugin.py`. It's a standard Python class decorated with `@kernel_function`. This allows the LLM to "see" your python methods as tools.
+3.  **Basic Planner**: We use the `FunctionCallingStepwisePlanner`. This is the "brain" that looks at all available plugins and decides the sequence of actions to take.
 
-## ☁️ Deploy to Azure
-
-The blueprint includes production-ready **Infrastructure as Code (Bicep)** for deploying to **Azure Container Apps** (ACA). This is the most economical way to run agentic workloads as it scales to zero.
-
-### Option 1: Automated Deployment (CLI)
-1. **Login to Azure**: `az login`
-2. **Run Deployment**:
-   ```bash
-   chmod +x scripts/deploy_azure.sh
-   ./scripts/deploy_azure.sh
-   ```
-
-### Option 2: Manual Portal Deployment
-1. Build the Docker image locally: `docker build --platform linux/amd64 -t semantic-kernel-blueprint .`
-2. Create an **Azure Container Registry** (ACR) and push the image.
-3. Create an **Azure Container App** pointing to that image.
-4. Add your `OPENAI_API_KEY` or `AZURE_OPENAI_API_KEY` to the **Secrets** section of the Container App.
-
-## 🧹 Cleanup (Absolute Zero Cost)
-
-To ensure no resources remain and stop all charges, run the cleanup script:
-```bash
-chmod +x scripts/cleanup_azure.sh
-./scripts/cleanup_azure.sh
+### 🏗 Architecture Explained
 ```
-This will delete the Resource Group and all associated resources.
-
-## 🛠 Project Structure
-
-```text
 semantic-kernel-production-blueprint/
-├── config/              # Kernel and Model settings
-├── src/                 # Core logic
-│   ├── agents/          # Specialized agent implementations
-│   ├── plugins/         # Native and Semantic plugins
-│   ├── orchestration/   # Group Chat and Workflow logic
-│   └── main.py          # CLI entry point
-├── api/                 # FastAPI service layer
-├── scripts/             # System utilities
-└── start.sh             # Setup and developer entry point
+├── src/
+│   ├── plugins/
+│   │   └── MathPlugin.py      # <--- NATIVE FUNCTION. A python class exposed to AI.
+│   └── kernel_setup.py        # <--- THE KERNEL. Configures the SDK and Service.
+├── api/
+│   └── main.py                # <--- THE API. FastAPI endpoint using the Planner.
+├── config/
+│   └── settings.py            # <--- CONFIG. Maps environment variables.
+└── test_sk.py                 # <--- THE TEST. Runs a simple plan locally.
 ```
+
+---
+
+## 🚀 Getting Started
+
+### 1. 🛠 Setup
+```bash
+chmod +x start.sh
+./start.sh
+```
+*Action required: Update `.env` with `OPENAI_API_KEY`.*
+
+### 2. 🧪 Test the Planner
+Run the test script to see the planner use the `MathPlugin`:
+```bash
+source venv/bin/activate
+export PYTHONPATH=$PYTHONPATH:$(pwd)
+python test_sk.py
+```
+*Query: "What is the square root of 144?" -> Planner calls MathPlugin.sqrt(144).*
+
+### 3. 🌐 Run the API Server
+```bash
+python api/main.py
+```
+```bash
+curl -X POST http://localhost:8000/process \
+     -H "Content-Type: application/json" \
+     -d '{"request": "Calculate 50 divided by 2."}'
+```
+
+---
+
+## 🛡 Production Readiness Checklist
+
+| Feature | Implemented? | Production Recommendation |
+| :--- | :---: | :--- |
+| **Enterprise Auth** | ✅ | SK supports Azure AD auth natively (especially with Azure OpenAI). |
+| **Filters** | ❌ | Implement `AutoFunctionInvocationFilter` to intercept and approve tool calls before they execute. |
+| **Memory** | ❌ | This blueprint is stateless. SK supports "Semantic Memory" (vector DBs) which should be added for RAG. |
+| **Telemetry** | ✅ | SK has deep integration with Azure Monitor and OpenTelemetry. |
+
+## 💡 Pro Tip
+Semantic Kernel is unique because it supports **Prompt Templating in text files**. You can create a folder structure with `skprompt.txt` and `config.json` to define "Semantic Functions" (pure prompts) that look and feel just like your Python functions. This allows non-coders to "write code" for the application!

@@ -1,76 +1,74 @@
-# AutoGen Production Blueprint 🤖
+# AutoGen Production Blueprint
 
-This is a production-grade template for building multi-agent systems using **Microsoft AutoGen**. It emphasizes modular agent design, secure code execution, and enterprise-level orchestration.
+> **The Conversational Multi-Agent Framework**
 
-## 🏗 Architecture
+This blueprint demonstrates the power of Microsoft's **AutoGen**, a framework where agents are **Conversable**. Agents interact with each other (and users) essentially by sending messages involved in a group chat, capable of autonomous loop execution.
 
-The blueprint is organized into specialized layers:
+---
 
-- **`config/`**: Centralized configuration for LLMs and agent parameters.
-- **`src/agents/`**: Modular agent definitions with distinct roles and capabilities.
-- **`src/workflows/`**: Orchestration logic (Group Chat, Finite State Machines, etc.).
-- **`src/tools/`**: Custom Python functions and API integrations.
-- **`api/`**: FastAPI implementation for asynchronous agent execution.
-- **`observability/`**: Logging, tracing, and cost estimation.
+## 📚 Educational Guide: Understanding AutoGen
 
-## 🌟 Key Features
+### 🧠 Core Philosophy
+AutoGen abstracts everything as a "Conversation".
+- **UserProxyAgent**: An agent that acts as a proxy for the human (used to execute code or ask for input).
+- **AssistantAgent**: An AI agent that can reason and write code.
+- **GroupChat**: A chat room where multiple agents (Coders, Reviewers, Products Managers) talk until a termination condition is met.
 
-- **Sandboxed Execution**: Pre-configured patterns for safe code execution.
-- **Modular Conversations**: Easy-to-extend workflow patterns for complex tasks.
-- **State Management**: Handling long-running conversations and state persistence.
-- **Enterprise Ready**: Built-in health checks and environment-driven configuration.
-- **Microservices Architecture**: Serve your agent teams via a robust REST API.
+### 🔑 Key Concepts in this Blueprint
+1.  **Two-Agent Conversation**: In `src/agents/group_chat.py`, we set up a classic pair: An `AssistantAgent` (The Solver) and a `UserProxyAgent` (The Executor). The Assistant writes code, and the UserProxy *actually executes it* locally (in a Docker container for safety) and reports the result back.
+2.  **Docker Execution**: This blueprint strictly enforces **Docker-based code execution**. Allowing agents to run raw Python on your host machine is a security nightmare. We use AutoGen's `DockerCommandLineCodeExecutor` to prevent this.
+3.  **Termination Conditions**: How does the agent stop? We define an `is_termination_msg` function. If the agent says "TERMINATE", the loop ends.
+
+### 🏗 Architecture Explained
+```
+autogen-production-blueprint/
+├── src/
+│   └── agents/
+│       └── group_chat.py      # <--- THE CHAT. Defines the Assistant and UserProxy interaction.
+├── api/
+│   └── main.py                # <--- THE API. A REST interface to trigger the conversation.
+├── Dockerfile                 # <--- THE SANDBOX. Defines the environment where agent code runs.
+├── work_dir/                  # <--- THE WORKSPACE. A shared folder mounted to the Docker container.
+└── test_autogen.py            # <--- THE TEST. Runs the conversation locally.
+```
+
+---
 
 ## 🚀 Getting Started
 
-1. **Setup Environment**:
-   ```bash
-   cd autogen-production-blueprint
-   chmod +x start.sh
-   ./start.sh
-   ```
-
-2. **Run via CLI**:
-   ```bash
-   venv/bin/python src/main.py
-   ```
-
-3. **Run via API**:
-   ```bash
-   venv/bin/uvicorn api.main:app --reload
-   ```
-
-## ☁️ Deploy to Azure
-
-The blueprint includes production-ready **Infrastructure as Code (Bicep)** for deploying to **Azure Container Apps** (ACA).
-
-### Automated Deployment (CLI)
-1. **Login to Azure**: `az login`
-2. **Run Deployment**:
-   ```bash
-   chmod +x scripts/deploy_azure.sh
-   ./scripts/deploy_azure.sh
-   ```
-
-## 🧹 Cleanup (Absolute Zero Cost)
-
-To ensure no resources remain and stop all charges, run the cleanup script:
+### 1. 🛠 Setup
 ```bash
-chmod +x scripts/cleanup_azure.sh
-./scripts/cleanup_azure.sh
+chmod +x start.sh
+./start.sh
 ```
-This will delete the Resource Group and all associated resources.
+*Action required: Update `.env` with `OPENAI_API_KEY`.*
 
-```text
-autogen-production-blueprint/
-├── config/              # LLM and Agent configurations
-├── src/                 # Core logic
-│   ├── agents/          # Specialized agent definitions
-│   ├── workflows/       # Team orchestration logic
-│   ├── tools/           # Custom executable tools
-│   └── main.py          # CLI entry point
-├── api/                 # FastAPI service layer
-├── observability/       # Tracing and logging
-├── scripts/             # System utilities
-└── start.sh             # Developer entry point
+### 2. 🐳 Prerequisite: Docker
+**Crucial Step**: You must have Docker Desktop running. AutoGen needs to spin up a container to execute the code the AI writes.
+
+### 3. 🧪 Run the Two-Agent Loop
+```bash
+source venv/bin/activate
+export PYTHONPATH=$PYTHONPATH:$(pwd)
+python test_autogen.py
 ```
+*Watch the magic: The Assistant will write a python script to `work_dir/`, the UserProxy will run it in Docker, and the result will be printed.*
+
+### 4. 🌐 Run the API Server
+```bash
+python api/main.py
+```
+
+---
+
+## 🛡 Production Readiness Checklist
+
+| Feature | Implemented? | Production Recommendation |
+| :--- | :---: | :--- |
+| **Sandboxing** | ✅ | Docker execution is mandatory in this blueprint. **Never disable this in production.** |
+| **Human-in-the-loop** | Limited | AutoGen supports `human_input_mode="ALWAYS"`. In an API context, this is tricky; often better to set to `NEVER` for autonomous tasks. |
+| **State Management** | ❌ | AutoGen chats are usually ephemeral. For long-term memory, integration with vector DBs (like Chroma) is required. |
+| **Costs** | ⚠️ | Code-writing loops can be long. Monitor step counts and token usage aggressively. |
+
+## 💡 Pro Tip
+AutoGen shines at **Code Generation**. Try asking the agent to "Plot a chart of the stock price of NVDA for the last month". It will write a Python script using `yfinance` and `matplotlib`, install the libs in Docker, run it, and save the `.png` file to your `work_dir/`. A complete data analyst in a box!

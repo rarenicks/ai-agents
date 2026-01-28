@@ -1,69 +1,86 @@
 # Google AI Agent System - Enterprise Edition
 
-Welcome to the **Google AI Agent System**, a professional-grade reference implementation for building multi-agent ecosystems. This platform leverages the **Google Agent Development Kit (ADK)** to coordinate specialized agents, manage enterprise safety, and provide deep observability.
+> **The Enterprise ADK Platform**
 
-![System Architecture](https://img.shields.io/badge/Architecture-Supervisor--Pattern-blue?style=for-the-badge)
-![Framework](https://img.shields.io/badge/Framework-Google--ADK-orange?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-All--Systems--Functional-green?style=for-the-badge)
+Welcome to the **Google AI Agent System**, a professional-grade reference implementation for building multi-agent ecosystems. This platform leverages the **Google Agent Development Kit (ADK)** to coordinate specialized agents, manage enterprise safety, and provide deep observability.
 
 ---
 
-## 📖 Essential Documentation
+## 📚 Educational Guide: Understanding Google ADK
 
-Navigate the platform with our specialized guides:
+### 🧠 Core Philosophy
+Most frameworks are "toys" or "scripts". The **ADK (Agent Development Kit)** is engineered for **Systemic Reliability**.
+- **Supervisor Pattern**: A central brain (Supervisor) that doesn't just "chat" but "delegates" responsibility.
+- **Plugins**: Enterprise-grade interceptors that sit *between* the LLM and the Tool. This allows for logging, PII redaction, and policy enforcement *without* changing the agent code.
+- **Model Context Protocol (MCP)**: Native support for connecting to remote tool servers, making this system extensible beyond a single container.
 
--   [**🏗 Architecture**](docs/ARCHITECTURE.md): Deep dive into the Supervisor Pattern, Registry design, and internal communication protocols.
--   [**🤝 Coordination & Code**](docs/COORDINATION.md): Learn how the Supervisor delegates tasks to specialized agents (Researcher, Writer, Analyst) and enables native Python code execution.
--   [**🛡 Plugins & Safety**](docs/PLUGINS.md): Learn how ADK Plugins handle observability, trace logging, and corporate security policies.
--   [**🌐 Tools & MCP**](docs/TOOLS_AND_MCP.md): Discover the hybrid tool system combining local Python functions with remote **Model Context Protocol** services.
--   [**👤 Identity & RBAC**](docs/IDENTITY.md): Learn how the platform manages user identities and enforces permission-based access control.
--   [**🏥 Health & Ops**](docs/HEALTH_AND_OPS.md): Setup instructions for health monitoring, system diagnostics, and performance optimization.
--   [**🏗 Infrastructure (Terraform)**](terraform/README.md): Automated deployment configuration for Google Cloud Platform.
+### 🔑 Key Concepts in this Blueprint
+1.  **Registry Pattern**: Look at `frameworks/registry/llm_registry.py`. We don't hardcode models. We have a central registry that routes requests to Gemini, GPT-4, or even local Ollama models dynamically.
+2.  **Supervisor & Delegation**: In `engine/agents/supervisor.py`, the agent doesn't do the work. It plans. It delegates to the `Researcher` or `Writer` (found in `engine/agents/*`). This separation of "Planning" and "Execution" is critical for reducing hallucinations in complex tasks.
+3.  **Plugins**: The `frameworks/adk/plugins.py` file demonstrates how to inject "Guardrails". If an agent tries to execute a dangerous tool, the Plugin intercepts it before it ever runs.
+
+### 🏗 Architecture Explained
+```
+google-ai-agent-system/
+├── engine/
+│   └── agents/               # <--- THE WORKFORCE. Supervisor, Researcher, Writer, Analyst definitions.
+├── frameworks/
+│   ├── adk/                  # <--- THE KERNEL. Core classes for Agents, Tools, and Plugins.
+│   ├── mcp/                  # <--- EXTENSIONS. Client for connecting to remote tool servers.
+│   └── registry/             # <--- THE ROUTER. Handles LLM instantiation (Gemini/Ollama/OpenAI).
+├── api/
+│   └── main.py               # <--- THE GATEWAY. Unified API surface.
+├── docs/                     # <--- KNOWLEDGE. Deep dives into Architecture, Tools, and Ops.
+└── terraform/                # <--- DEPLOYMENT. GCP Infrastructure-as-Code.
+```
 
 ---
 
 ## 🚀 One-Minute Quick Start
 
-### 1. Environment Setup
+### 1. 🛠 Environment Setup
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env  # Update your GOOGLE_API_KEY
+cp .env.example .env  # App asks for GOOGLE_API_KEY (for Gemini) or acts in local mode
 ```
 
-### 2. Launch the Engine
+### 2. ⚡ Launch the Engine
 ```bash
 ./start.sh
 ```
 
-### 3. Verify Health
+### 3. 🏥 Verify Health
+Run the diagnostic script to ensure agents are online and the registry is loaded:
 ```bash
 ./venv/bin/python3 scripts/system_health.py
 ```
 
----
-
-## 🛠 Platform Highlights
-
-### 🧠 Strategic Orchestration
-The system uses a central **Supervisor** to plan and delegate tasks. It utilizes native ADK delegation to transfer control between high-level reasoning and specialized worker agents like the **Researcher** and **Writer**.
-
-### 🔌 Enterprise Plugin Architecture
--   **Observability**: Real-time logging of thoughts and tool executions.
--   **Guardrails**: Automated policy injection and sensitive tool intercepts.
--   **Efficiency**: Native context caching and session resumability.
-
-### 🏢 Cross-Cloud Versatility
-Whether you use **Google Gemini** (Vertex AI / AI Studio) or local models via **Ollama**, the platform adapts seamlessly using the **LiteLLM** registry integration.
+### 4. 🧪 Run a CLI Demo
+```bash
+python run_cli.py
+```
 
 ---
 
-## 🤝 Contributions
-We welcome contributions to the agent registry, tool implementations, and core engine enhancements.
-
-## 📜 License
-Licensed under the [MIT License](LICENSE).
+## 📖 Deep Dive Documentation
+For a complete masterclass on building enterprise systems, read our specialized guides:
+-   [**🏗 Architecture**](docs/ARCHITECTURE.md): The Supervisor Pattern & Internals.
+-   [**🤝 Coordination**](docs/COORDINATION.md): How delegation works under the hood.
+-   [**🛡 Plugins & Safety**](docs/PLUGINS.md): Implementing corporate policies.
+-   [**🌐 Tools & MCP**](docs/TOOLS_AND_MCP.md): Hybrid local/remote tooling.
 
 ---
-*Built with ❤️ by the Google Agentic AI Community.*
+
+## 🛡 Production Readiness Checklist
+
+| Feature | Implemented? | Production Recommendation |
+| :--- | :---: | :--- |
+| **Model Agnosticism** | ✅ | Supports Gemini (Vertex/Studio), OpenAI, and Ollama via `LLMRegistry`. |
+| **Safety Layers** | ✅ | Plugins system is active. Add custom PII filters for production. |
+| **Infrastructure** | ✅ | Full Terraform scripts included for GCP deployment. |
+| **Health Checks** | ✅ | `scripts/system_health.py` and API health endpoints are production-ready. |
+
+## 💡 Pro Tip
+Check `docs/TOOLS_AND_MCP.md`. The system leverages **MCP (Model Context Protocol)**. This means you can run a "Tool Server" on a completely different machine (e.g., a secure internal server accessing SQL) and this Agent System can "discover" and use those tools safely over the network!

@@ -1,97 +1,77 @@
 # AI Agent Blueprint Bank 🚀
 
-Welcome to the **AI Agent Blueprint Bank**. This repository is a "Golden Single Repo" for production-grade agent architectures across all major providers (Google, CrewAI, AutoGen, Semantic Kernel, etc.).
+> **The "Golden Standard" Repository for Production-Grade AI Agents**
 
-Each blueprint in this bank is designed for stability, scalability, and enterprise readiness, following best practices for configuration, observability, and deployment.
+Welcome to the **AI Agent Blueprint Bank**. This repository serves as a definitive reference library for building enterprise-ready agentic systems. We have consolidated high-quality, production-hardened blueprints for every major agent framework in the ecosystem.
+
+Each blueprint is a self-contained project with its own API, configuration management, testing suite, and educational guide.
 
 ---
 
-## 🏗 Available Blueprints
+## 🧭 How to Choose Your Framework
 
-### 1. Google AI Agent System (ADK)
-- **Framework**: Google Agent Development Kit (ADK)
-- **Directory**: `google-ai-agent-system/`
-- **Focus**: Supervisor pattern, RBAC, MCP native, Deep Observability.
-- [Architecture Docs](google-ai-agent-system/docs/ARCHITECTURE.md) | [Tools Info](google-ai-agent-system/docs/TOOLS_AND_MCP.md)
+| Framework | Best Used For... | Key "Superpower" | Directory |
+| :--- | :--- | :--- | :--- |
+| **[Google ADK](./google-ai-agent-system)** | **Enterprise Platforms** | 🛡 **Reliability**: RBAC, Supervision, & Observability built-in. | `google-ai-agent-system/` |
+| **[LangGraph](./langgraph-production-blueprint)** | **Complex Logic** | 🔄 **Loops**: Cyclic state machines with time-travel. | `langgraph-production-blueprint/` |
+| **[CrewAI](./crewai-production-blueprint)** | **Role-Based Teams** | 🎭 **Orchestration**: Mimics real-world team structures. | `crewai-production-blueprint/` |
+| **[PydanticAI](./pydantic-ai-production-blueprint)** | **Production Apps** | 🔒 **Type Safety**: Guaranteed structured inputs/outputs. | `pydantic-ai-production-blueprint/` |
+| **[Agno (Phidata)](./agno-production-blueprint)** | **Long-Running Chat** | 💾 **Memory**: Database-first design for endless sessions. | `agno-production-blueprint/` |
+| **[LlamaIndex](./llamaindex-production-blueprint)** | **Data-Heavy Agents** | 📚 **RAG**: Best-in-class retrieval integration. | `llamaindex-production-blueprint/` |
+| **[OpenAI Swarm](./openai-agents-production-blueprint)** | **Native Handoffs** | 🤝 **Simplicity**: Zero-abstraction function routing. | `openai-agents-production-blueprint/` |
+| **[AutoGen](./autogen-production-blueprint)** | **Coding & Analysis** | 📦 **Sandboxing**: Runs code safely in Docker containers. | `autogen-production-blueprint/` |
+| **[Semantic Kernel](./semantic-kernel-production-blueprint)** | **App Integration** | 🔌 **Plugins**: Easy integration with existing business logic. | `semantic-kernel-production-blueprint/` |
 
-### 2. CrewAI Production Blueprint
-- **Framework**: CrewAI
-- **Directory**: `crewai-production-blueprint/`
-- **Focus**: YAML-driven config, Microservices ready (FastAPI), Custom Enterprise Tools.
-- [Blueprint Overview](crewai-production-blueprint/README.md)
+---
 
-### 3. OpenAI Agent SDK
-- **Framework**: OpenAI Agent SDK
-- **Directory**: `openai-agents-production-blueprint/`
-- **Focus**: The official SDK for production multi-agent systems, featuring native handoffs and deep Azure integration.
-- [Blueprint Overview](openai-agents-production-blueprint/README.md)
+## 🏗 Key Features Across All Blueprints
 
-### 4. AutoGen Production Blueprint
-- **Framework**: Microsoft AutoGen
-- **Directory**: `autogen-production-blueprint/`
-- **Focus**: Multi-agent orchestration, sandboxed code execution, and modular state flows.
-- [Blueprint Overview](autogen-production-blueprint/README.md)
+Regardless of the framework, every blueprint in this repository adheres to these **Production Standards**:
 
-### 5. PydanticAI Production Blueprint
-- **Framework**: PydanticAI
-- **Directory**: `pydantic-ai-production-blueprint/`
-- **Focus**: Type-safe agents with structured outputs and Logfire observability.
-- [Blueprint Overview](pydantic-ai-production-blueprint/README.md)
-
-### 6. Semantic Kernel Blueprint
+1.  **Environment Isolation**: Each project has its own `.env` and `venv`. No dependency hell.
+2.  **Configuration as Code**: We use `Pydantic Settings` or `python-dotenv` to manage secrets.
+3.  **API First**: Every agent is wrapped in a **FastAPI** or equivalent server, ready for deployment.
+4.  **Observability**: Pre-configured hooks for tracing (LangSmith, Logfire, ADK Plugins).
+5.  **Educational Guides**: Each `README.md` contains a "Deep Dive" section explaining the *Philosophy* of that specific framework.
 
 ---
 
 ## 🚀 Getting Started
 
-1. **Clone the repository**:
+1.  **Clone the Repository**:
     ```bash
     git clone https://github.com/rarenicks/ai-agents.git
     cd ai-agents
     ```
 
-2. **Deploy a Blueprint**:
-    Each blueprint is a self-contained production environment. Navigate to the blueprint of your choice and follow its specific `README.md`.
+2.  **Pick a Blueprint**:
+    Navigate to the folder of the framework you want to learn.
     ```bash
-    cd crewai-production-blueprint
+    cd langgraph-production-blueprint
+    ```
+
+3.  **Run the Setup Script**:
+    We provide a consistent startup experience.
+    ```bash
     chmod +x start.sh
     ./start.sh
     ```
 
----
-
-### 7. LangGraph Production Blueprint
-- **Framework**: LangGraph
-- **Directory**: `langgraph-production-blueprint/`
-- **Focus**: Stateful, multi-agent cyclic workflows with SQLite persistence and LangSmith tracing.
-- [Blueprint Overview](langgraph-production-blueprint/README.md)
+4.  **Read the Guide**:
+    Open the `README.md` in that folder for a masterclass on that specific framework.
 
 ---
-
-### 8. LlamaIndex Production Blueprint
-- **Framework**: LlamaIndex
-- **Directory**: `llamaindex-production-blueprint/`
-- **Focus**: Data-augmented agents (RAG) using the ReAct pattern for ground-truth reasoning.
-- [Blueprint Overview](llamaindex-production-blueprint/README.md)
-
----
-
-### 9. Agno Production Blueprint
-- **Framework**: Agno (formerly Phidata)
-- **Directory**: `agno-production-blueprint/`
-- **Focus**: Database-first agents with persistent session storage, tool-calling, and Streamlit UI.
-- [Blueprint Overview](agno-production-blueprint/README.md)
-
----
-
-## 🎯 Our Mission
-To provide the definitive "Golden Standard" for agentic workflows. Every blueprint here is more than just a tutorial—it's a foundation you can build your enterprise products on.
 
 ## 🤝 Contributions
-We welcome contributions that add new high-tier architectures or improve the robustness of existing ones.
+
+This is a living library. We welcome contributions that:
+-   Add new enterprise patterns (e.g., Evaluation pipelines).
+-   Update frameworks to their latest breaking changes.
+-   Add new "Blueprints" for emerging frameworks.
 
 ## 📜 License
-This project is licensed under the MIT License.
+
+This project is licensed under the **MIT License**.
 
 ---
-*For support or inquiries, contact [ai.avdhesh@gmail.com](mailto:ai.avdhesh@gmail.com).*
+*Maintained by the Agentic AI Community. For questions, reach out to [ai.avdhesh@gmail.com](mailto:ai.avdhesh@gmail.com).*

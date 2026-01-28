@@ -75,6 +75,7 @@ curl -X POST http://localhost:8000/kickoff \
 | **Observability** | ❌ | CrewAI has built-in tracing, but integrating `LangSmith` is recommended for deep debugging. |
 | **Memory** | ⚠️ | CrewAI has short-term memory. Enable `memory=True` in `Crew(...)` for embedding-based long-term memory (requires OpenAI embeddings). |
 | **Costs** | ⚠️ | Crews can be chatty. Use smaller models (e.g., `gpt-4o-mini`) for the "worker" agents and larger ones for the "manager". |
+| **Containerization**| ✅ | `Dockerfile` included. |
 
 ## 💡 Pro Tip
 In `src/crew.py`, change `process=Process.sequential` to `process=Process.hierarchical`. This automatically adds a "Manager" agent that overrides the sequential flow and assigns tasks dynamically based on agent load and capability!

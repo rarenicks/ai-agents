@@ -69,6 +69,7 @@ python api/main.py
 | **Human-in-the-loop** | Limited | AutoGen supports `human_input_mode="ALWAYS"`. In an API context, this is tricky; often better to set to `NEVER` for autonomous tasks. |
 | **State Management** | ❌ | AutoGen chats are usually ephemeral. For long-term memory, integration with vector DBs (like Chroma) is required. |
 | **Costs** | ⚠️ | Code-writing loops can be long. Monitor step counts and token usage aggressively. |
+| **Containerization**| ✅ | `Dockerfile` included for command execution. |
 
 ## 💡 Pro Tip
 AutoGen shines at **Code Generation**. Try asking the agent to "Plot a chart of the stock price of NVDA for the last month". It will write a Python script using `yfinance` and `matplotlib`, install the libs in Docker, run it, and save the `.png` file to your `work_dir/`. A complete data analyst in a box!

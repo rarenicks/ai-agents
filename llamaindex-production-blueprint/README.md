@@ -75,6 +75,7 @@ Edit `data/policy.md`. Change the "Meal Allowance" to `$100`. Restart the server
 | **Vector DB** | ⚠️ (Local) | Currently memory-based. Switch to Qdrant/Pinecone for handling large datasets. |
 | **Chunking** | ✅ | Configured in `config/settings.py`. Tuning `CHUNK_SIZE` is critical for performance. |
 | **Reasoning** | ✅ | `ReActAgent` is used. For very complex tasks, consider `FunctionCallingAgent` (if using OpenAI). |
+| **Containerization**| ✅ | `Dockerfile` included. |
 
 ## 💡 Pro Tip
 LlamaIndex creates a storage folder locally (`storage/`) if you persist it. In production, you never want to re-index data on every startup. You should build the index *once* (in a build pipeline), save it to disk/S3, and have your API simply *load* it for faster startup times.

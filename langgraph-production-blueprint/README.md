@@ -74,6 +74,7 @@ If you set `LANGSMITH_TRACING=true` in `.env`, go to [smith.langchain.com](https
 | **Async** | ✅ | The API and Graph uses `async/await` for high concurrency. |
 | **Retries** | ❌ | Add node-level retry policies for robust web searching. |
 | **Streaming** | ❌ | API currently waits for full response. Upgrade to SSE (Server-Sent Events) for real-time UX. |
+| **Containerization**| ✅ | `Dockerfile` included. |
 
 ## 💡 Pro Tip
 Open `src/state/agent_state.py`. Add a new field (e.g., `user_sentiment: str`) to the `AgentState` class. Then update `research_graph.py` to populate it. You've just permanently expanded your agent's short-term memory!

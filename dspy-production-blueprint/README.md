@@ -71,6 +71,7 @@ curl -X POST http://localhost:8000/check \
 | **Optimization** | ❌ (Basic) | Crucial step missing: Use `BootstrapFewShot` to "compile" this module with labeled examples (`trainset`) to maximize accuracy. |
 | **Caching** | ❌ | DSPy has a built-in cache. Enable it for development speed. |
 | **Assertions** | ❌ | Use `dspy.Assert` to enforce constraints (e.g., "Reasoning must be < 50 words") during runtime. |
+| **Containerization**| ✅ | `Dockerfile` included. |
 
 ## 💡 Pro Tip
 The prompt you see running is "Zero Shot". To make it strictly better, create a list of 5 examples (`dspy.Example`), and pass them to an Optimizer (`dspy.teleprompt.BootstrapFewShot`). The optimizer will verify which examples actually help the model and modify the prompt dynamically!

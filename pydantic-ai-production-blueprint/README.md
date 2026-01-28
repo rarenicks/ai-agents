@@ -75,6 +75,7 @@ curl -X POST http://localhost:8000/support \
 | **Dependency Injection** | ✅ | Fully used for passing user context. |
 | **Observability** | ✅ | Logfire is configured (requires token). |
 | **Testing** | ✅ | `test_pydantic_ai.py` demonstrates how to test agents deterministically. |
+| **Containerization**| ✅ | `Dockerfile` included. |
 
 ## 💡 Pro Tip
 Go to `src/models/support.py` and add a validator (e.g., `@field_validator`) to `risk_level` ensuring it's between 1-10. If the LLM tries to return "11", Pydantic will catch it, reject it, and force the LLM to retry automatically!

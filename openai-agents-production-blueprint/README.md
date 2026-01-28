@@ -65,6 +65,7 @@ This blueprint includes a `main.bicep` file. If you are on Azure, you can deploy
 | **State** | ❌ | Currently stateless. You need to pass a `context` dict through the runner loop for real apps. |
 | **Guardrails** | ❌ | Add content filters (Azure AI Content Safety) in the runner loop. |
 | **Models** | ✅ | Supports both `gpt-4o` (OpenAI) and Azure deployments via `config/settings.py`. |
+| **Containerization**| ✅ | `Dockerfile` and `main.bicep` included. |
 
 ## 💡 Pro Tip
 The "Handoff" pattern is extremely powerful for valid state enforcement. For example, the `flight_modification_agent` can demand a `booking_reference` before doing anything. The `triage_agent` doesn't need to know about booking references; it just hands off!

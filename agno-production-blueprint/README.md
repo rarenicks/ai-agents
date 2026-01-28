@@ -78,7 +78,7 @@ curl -X POST http://localhost:8000/chat \
 | **Persistence** | ✅ | Use `PgDb` (PostgreSQL) instead of SQLite for concurrency. |
 | **Observability** | ❌ | Integrate Agno's `AgentOps` or OpenTelemetry. |
 | **API Security** | ❌ | Add API Key validation (e.g., `X-API-Key` header) in FastAPI. |
-| **Containerization**| ❌ | Add a `Dockerfile` to package this for Kubernetes/ECS. |
+| **Containerization**| ✅ | Ready for Docker deployment. |
 
 ## 💡 Pro Tip
 In `src/agents/assistant.py`, try changing `markdown=True` to `False` and inspect the raw JSON output. You'll see how Agno structures tool calls and thoughts before rendering them!

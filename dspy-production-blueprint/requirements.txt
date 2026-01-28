@@ -1,0 +1,6 @@
+dspy-ai
+openai
+fastapi
+uvicorn
+python-dotenv
+pydantic-settings

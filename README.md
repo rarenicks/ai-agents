@@ -21,6 +21,7 @@ Not all agents are created equal. Use this matrix to select the right tool for y
 | **[OpenAI Swarm](./openai-agents-production-blueprint)** | **Native Handoffs** | Minimalist | 🤝 **Simplicity**: Zero-abstraction function routing (Agent A -> Agent B). |
 | **[AutoGen](./autogen-production-blueprint)** | **Coding & Analysis** | Conversation | 📦 **Sandboxing**: Runs code safely in Docker containers. |
 | **[Semantic Kernel](./semantic-kernel-production-blueprint)** | **Legacy Integration** | Plugin Architecture | 🔌 **Versatility**: Easy integration with C#/.NET and existing business logic. |
+| **[DSPy](./dspy-production-blueprint)** | **Optimization** | Programming | 🧠 **Self-Correction**: Compiles/Optimizes prompts automatically. |
 
 ---
 

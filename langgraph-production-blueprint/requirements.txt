@@ -1,0 +1,11 @@
+langgraph
+langchain
+langchain-openai
+fastapi
+uvicorn
+python-dotenv
+pydantic-settings
+langsmith
+rich
+httpx
+aiosqlite

@@ -1,113 +1,78 @@
-# AI Agent Blueprint Bank 🚀
+# AI Agent Blueprints
 
-> **The "Golden Standard" Repository for Production-Grade AI Agents**
+A collection of functional reference implementations for major AI agent frameworks.
 
-Welcome to the **AI Agent Blueprint Bank**. This repository serves as the definitive reference library for building enterprise-ready agentic systems. We have consolidated high-quality, production-hardened blueprints for every major agent framework in the ecosystem.
+## 🎯 Purpose
 
----
+The landscape of AI agent frameworks is fragmented and rapidly evolving. This repository serves as a **learning laboratory** to help engineers understand, compare, and experiment with different approaches to building agentic systems.
 
-## 🧭 The Decision Matrix: Choosing Your Framework
+This is **not** a production-ready framework or a deployment solution. It is a set of "blueprints"—code scaffolds designed to accelerate your understanding of how each specific framework handles modularity, state, tooling, and orchestration.
 
-Not all agents are created equal. Use this matrix to select the right tool for your specific problem domain.
+## 👤 Target Audience
 
-| Framework | Best For... | Philosophy | Key "Superpower" |
-| :--- | :--- | :--- | :--- |
-| **[Google ADK](./google-ai-agent-system)** | **Enterprise Platforms** | System-over-Agent | 🛡 **Reliability**: RBAC, Supervision, & Observability built-in. |
-| **[LangGraph](./langgraph-production-blueprint)** | **Complex Logic** | Graph Theory | 🔄 **Loops**: Cyclic state machines with time-travel logging. |
-| **[CrewAI](./crewai-production-blueprint)** | **Creative Teams** | Role-Playing | 🎭 **Orchestration**: Mimics real-world org charts (Manager/Worker). |
-| **[PydanticAI](./pydantic-ai-production-blueprint)** | **Production Apps** | Type Theory | 🔒 **Type Safety**: Guaranteed structured inputs/outputs via validation. |
-| **[Agno (Phidata)](./agno-production-blueprint)** | **Long-Running Chat** | Database-First | 💾 **Memory**: Sessions are DB records first, code second. |
-| **[LlamaIndex](./llamaindex-production-blueprint)** | **Data-Heavy Agents** | Retrieval-First | 📚 **RAG**: Best-in-class vector store and query engine integration. |
-| **[OpenAI Swarm](./openai-agents-production-blueprint)** | **Native Handoffs** | Minimalist | 🤝 **Simplicity**: Zero-abstraction function routing (Agent A -> Agent B). |
-| **[AutoGen](./autogen-production-blueprint)** | **Coding & Analysis** | Conversation | 📦 **Sandboxing**: Runs code safely in Docker containers. |
-| **[Semantic Kernel](./semantic-kernel-production-blueprint)** | **Legacy Integration** | Plugin Architecture | 🔌 **Versatility**: Easy integration with C#/.NET and existing business logic. |
-| **[DSPy](./dspy-production-blueprint)** | **Optimization** | Programming | 🧠 **Self-Correction**: Compiles/Optimizes prompts automatically. |
+**This repository is for:**
+-   **Engineers** evaluating which framework fits their specific use case.
+-   **Learners** wanting to see functional code rather than abstract documentation.
+-   **Prototypers** needing a quick working environment to test an idea.
 
----
+**This repository is NOT for:**
+-   **Production Deployment**: These examples lack the necessary security, observability, and error handling for critical systems.
+-   **Scalability Testing**: The implementations are optimized for educational clarity, not high-throughput concurrency.
 
-## 🏗 Anatomy of a Blueprint
+## 📂 Frameworks Overview
 
-Every blueprint in this repository follows a **Unified Architecture**, making it easy for you to switch between frameworks without relearning project layout.
+Each directory contains a standalone implementation using a specific framework, demonstrating its core philosophy.
 
-> **The Standard Directory Structure**
+| Framework | Core Philosophy | Best For Learning... |
+| :--- | :--- | :--- |
+| **[Google ADK](./google-ai-agent-system)** | Systemic Design | How to structure large, multi-agent systems with clear delegation. |
+| **[LangGraph](./langgraph-production-blueprint)** | Graph Theory | Managing complex, cyclic state and time-travel debugging. |
+| **[CrewAI](./crewai-production-blueprint)** | Role-Playing | Orchestrating teams with distinct personas and hierarchical tasks. |
+| **[PydanticAI](./pydantic-ai-production-blueprint)** | Type Safety | Using Python type systems to enforce LLM output structure. |
+| **[Agno (Phidata)](./agno-production-blueprint)** | Storage-First | Persisting long-running agent sessions in a database. |
+| **[LlamaIndex](./llamaindex-production-blueprint)** | Data-Centric | Integrating agents deeply with vector search and RAG pipelines. |
+| **[OpenAI Swarm](./openai-agents-production-blueprint)** | Minimalist | Understanding native handoffs without heavy abstraction layers. |
+| **[AutoGen](./autogen-production-blueprint)** | Conversational | Sandboxed code execution and multi-agent chat loops. |
+| **[Semantic Kernel](./semantic-kernel-production-blueprint)** | Plugin-Based | Integrating LLMs into existing enterprise applications (C#/.NET roots). |
+| **[DSPy](./dspy-production-blueprint)** | Declarative | "Programming" prompts through optimization rather than manual engineering. |
 
-```text
-blueprint-name/
-├── src/
-│   ├── agents/          # <--- THE BRAIN: Agent definitions, Prompts, and Graphs.
-│   ├── tools/           # <--- THE HANDS: Python functions or Class-based tools.
-│   └── state/           # <--- THE MEMORY: Pydantic models for state or session logic.
-├── api/
-│   └── main.py          # <--- THE FACE: FastAPI server wrapping the agent.
-├── config/
-│   └── settings.py      # <--- THE NERVES: Environment variables (Pydantic Settings).
-├── ui/                  # <--- THE DEMO: Streamlit or Chainlit app for testing.
-├── tests/               # <--- THE ALARM: Pytest suite.
-├── start.sh             # <--- THE KEY: One-click setup script.
-└── README.md            # <--- THE MANUAL: Educational guide.
-```
+## 🛠 Usage Guide
 
----
+Each blueprint is self-contained with its own dependencies and configuration (no shared root dependencies).
 
-## 🌟 Production Standards
+1.  **Clone the Repo**:
+    ```bash
+    git clone https://github.com/rarenicks/ai-agents.git
+    cd ai-agents
+    ```
 
-Regardless of the framework, every blueprint adheres to these strict standards:
+2.  **Select a Framework**:
+    Decide what you want to learn (e.g., "How does LangGraph handle loops?").
+    ```bash
+    cd langgraph-production-blueprint
+    ```
 
-### 1. Environment Isolation 🔒
--   **No Dependency Hell**: Each project has its own `venv` and `requirements.txt`.
--   **Local Config**: Each project uses its own `.env` file. We do not use a global root config.
+3.  **Initialize**:
+    We provide a standard setup script for detailed environment setup.
+    ```bash
+    chmod +x start.sh
+    ./start.sh
+    ```
+    *Add your API keys to the generated `.env` file.*
 
-### 2. Configuration as Code ⚙️
--   We use `pydantic-settings` or `python-dotenv`.
--   No hardcoded API keys.
--   Defaults provided for non-sensitive values (models, timeouts).
+4.  **Experiment**:
+    Read the `README.md` in that specific folder for a specific "Deep Dive" explanation, then run the provided API or CLI scripts.
 
-### 3. API-First Design 🔌
--   Agents are not just scripts; they are **Services**.
--   Every blueprint includes a `FastAPI` (or equivalent) server.
--   Ready for Dockerization and Kubernetes deployment.
+## ⚠️ Disclaimer & Limitations
 
-### 4. Deep Observability 🔭
--   Pre-configured hooks for **LangSmith**, **Logfire**, or **AgentOps**.
--   You can see *what* the agent is thinking, not just the final answer.
-
----
-
-## 🚀 Getting Started
-
-### Step 1: Clone & Explore
-```bash
-git clone https://github.com/rarenicks/ai-agents.git
-cd ai-agents
-```
-
-### Step 2: Pick Your Fighter
-Navigate to the framework that interests you.
-```bash
-cd langgraph-production-blueprint
-```
-
-### Step 3: One-Click Setup
-Use our standardized startup script to initialize the environment.
-```bash
-chmod +x start.sh
-./start.sh
-```
-*Follow the prompts to add your API Keys to the newly created `.env` file.*
-
-### Step 4: Learn
-Open the `README.md` in that folder. It contains a "Deep Dive" section explaining the philosophy of that specific framework.
-
----
+-   **Security**: These examples expose endpoints that are not secured. Do not expose them to the public internet.
+-   **Costs**: Running these agents involves calls to paid LLM APIs (OpenAI, Gemini, etc.). Monitor your usage carefully.
+-   **Stability**: AI frameworks change frequently. These blueprints are snapshots in time and may require updates to match the latest library versions.
 
 ## 🤝 Contributions
-This is a living library. We welcome contributions that:
--   **Add new patterns** (e.g., Evaluation pipelines, new Tooling ecosystems).
--   **Update frameworks** to their latest breaking changes.
--   **Optimize infrastructure** (e.g., Terraform/Bicep template improvements).
+
+We welcome contributions that fix bugs, update dependencies, or clarify the educational content. Please ensure new PRs focus on readability and conceptual clarity over feature bloat.
 
 ## 📜 License
-This project is licensed under the **MIT License**.
 
----
-*Maintained by the Agentic AI Community. For questions, reach out to [ai.avdhesh@gmail.com](mailto:ai.avdhesh@gmail.com).*
+MIT License.

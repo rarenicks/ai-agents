@@ -1,8 +1,8 @@
-# OpenAI Agents (Swarm) Production Blueprint
+# OpenAI Agents (Swarm) Blueprint
 
 > **The Native Multi-Agent SDK**
 
-This blueprint provides a production reference for the **OpenAI Agent SDK** (often evolving from patterns like "Swarm"). It focuses on **native handoffs**—the cleanest way to coordinate multiple specialized agents.
+This blueprint provides a reference for the **OpenAI Agent SDK** (often evolving from patterns like "Swarm"). It focuses on **native handoffs**—the cleanest way to coordinate multiple specialized agents.
 
 ---
 
@@ -57,9 +57,9 @@ This blueprint includes a `main.bicep` file. If you are on Azure, you can deploy
 
 ---
 
-## 🛡 Production Readiness Checklist
+## 🛡 Blueprint Features Checklist
 
-| Feature | Implemented? | Production Recommendation |
+| Feature | Implemented? | Notes |
 | :--- | :---: | :--- |
 | **Handoffs** | ✅ | Native function-based handoffs used. |
 | **State** | ❌ | Currently stateless. You need to pass a `context` dict through the runner loop for real apps. |

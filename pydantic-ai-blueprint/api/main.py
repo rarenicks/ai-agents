@@ -19,7 +19,7 @@ logfire.configure(
     advanced=AdvancedOptions(base_url=settings.LOGFIRE_BASE_URL)
 )
 
-app = FastAPI(title="PydanticAI Production API", version="1.0.0")
+app = FastAPI(title="PydanticAI Blueprint API", version="1.0.0")
 logfire.instrument_fastapi(app)
 
 class SupportRequest(BaseModel):

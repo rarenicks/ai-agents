@@ -9,7 +9,7 @@ def get_assistant(user_id: str = "default_user", session_id: str = None):
     Returns an Agno Agent with tool-calling and storage.
     """
     return Agent(
-        name="ProductionAssistant",
+        name="BlueprintAssistant",
         model=OpenAIChat(id=settings.openai_model_name, api_key=settings.openai_api_key),
         tools=[DuckDuckGoTools()],
         description="You are a helpful assistant that uses tools to answer questions.",

@@ -1,8 +1,8 @@
-# Agno (Phidata) Production Blueprint
+# Agno (Phidata) Blueprint
 
 > **The Database-First Agent Framework**
 
-This blueprint provides a complete, production-ready environment for building agents with **Agno** (formerly Phidata). Agno distinguishes itself by treating **conversation history and agent state as database records** first, making it exceptionally good for long-running, persistent agent interactions.
+This blueprint provides a complete environment for building agents with **Agno** (formerly Phidata). Agno distinguishes itself by treating **conversation history and agent state as database records** first, making it exceptionally good for long-running, persistent agent interactions.
 
 ---
 
@@ -56,7 +56,7 @@ streamlit run ui/app.py
 ```
 
 ### 3. 🌐 Run the API Server
-For production deployment, you'd run this FastAPI server:
+For deployment, you'd run this FastAPI server:
 ```bash
 source venv/bin/activate
 export PYTHONPATH=$PYTHONPATH:$(pwd)
@@ -71,11 +71,11 @@ curl -X POST http://localhost:8000/chat \
 
 ---
 
-## 🛡 Production Readiness Checklist
+## 🛡 Blueprint Features Checklist
 
-| Feature | Implemented? | Production Recommendation |
+| Feature | Implemented? | Notes |
 | :--- | :---: | :--- |
-| **Persistence** | ✅ | Use `PgDb` (PostgreSQL) instead of SQLite for concurrency. |
+| **Persistence** | ✅ | Use `PgDb` (PostgreSQL) instead of SQLite for concurrency in real apps. |
 | **Observability** | ❌ | Integrate Agno's `AgentOps` or OpenTelemetry. |
 | **API Security** | ❌ | Add API Key validation (e.g., `X-API-Key` header) in FastAPI. |
 | **Containerization**| ✅ | Ready for Docker deployment. |

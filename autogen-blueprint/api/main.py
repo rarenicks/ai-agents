@@ -8,7 +8,7 @@ import sys
 # Add root to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-app = FastAPI(title="AutoGen Production API", version="1.0.0")
+app = FastAPI(title="AutoGen Blueprint API", version="1.0.0")
 
 class ResearchRequest(BaseModel):
     topic: str

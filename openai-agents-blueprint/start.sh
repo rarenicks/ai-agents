@@ -5,7 +5,7 @@ VENV_DIR="venv"
 REQS_FILE="requirements.txt"
 ENV_FILE=".env"
 
-echo "🚀 Initializing OpenAI Agents Production Blueprint..."
+echo "🚀 Initializing OpenAI Agents Blueprint..."
 
 # Check for Python
 if ! command -v python3 &> /dev/null

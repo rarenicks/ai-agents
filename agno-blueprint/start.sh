@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Agno Production Blueprint Setup Script
+# Agno Blueprint Setup Script
 
 # 1. Create virtual environment if it doesn't exist
 if [ ! -d "venv" ]; then

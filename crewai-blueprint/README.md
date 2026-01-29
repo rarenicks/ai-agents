@@ -1,4 +1,4 @@
-# CrewAI Production Blueprint
+# CrewAI Blueprint
 
 > **The Role-Based Agent Orchestrator**
 
@@ -67,9 +67,9 @@ curl -X POST http://localhost:8000/kickoff \
 
 ---
 
-## 🛡 Production Readiness Checklist
+## 🛡 Blueprint Features Checklist
 
-| Feature | Implemented? | Production Recommendation |
+| Feature | Implemented? | Notes |
 | :--- | :---: | :--- |
 | **Separation of Concerns** | ✅ | YAML configs isolate prompts from code. |
 | **Observability** | ❌ | CrewAI has built-in tracing, but integrating `LangSmith` is recommended for deep debugging. |

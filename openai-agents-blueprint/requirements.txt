@@ -1,4 +1,4 @@
-# OpenAI Agent SDK Production Blueprint
+# OpenAI Agent SDK Blueprint
 openai-agents
 openai
 fastapi

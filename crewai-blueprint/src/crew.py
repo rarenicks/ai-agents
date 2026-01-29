@@ -3,8 +3,8 @@ from crewai.project import CrewBase, agent, crew, task
 from src.tools.custom_tool import EnterpriseSearchTool
 
 @CrewBase
-class ProductionBlueprintCrew():
-	"""ProductionBlueprint crew"""
+class BlueprintCrew():
+	"""Blueprint crew"""
 	agents_config = '../config/agents.yaml'
 	tasks_config = '../config/tasks.yaml'
 
@@ -38,7 +38,7 @@ class ProductionBlueprintCrew():
 
 	@crew
 	def crew(self) -> Crew:
-		"""Creates the ProductionBlueprint crew"""
+		"""Creates the Blueprint crew"""
 		return Crew(
 			agents=self.agents, # Automatically created by the @agent decorator
 			tasks=self.tasks, # Automatically created by the @task decorator

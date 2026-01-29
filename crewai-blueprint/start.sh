@@ -4,7 +4,7 @@
 VENV_DIR="venv"
 PYTHON_BIN="$VENV_DIR/bin/python"
 
-echo "🚀 Initializing CrewAI Production Blueprint..."
+echo "🚀 Initializing CrewAI Blueprint..."
 
 # Check for uv (high-performance python package manager)
 if command -v uv &> /dev/null

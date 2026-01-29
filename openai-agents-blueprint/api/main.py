@@ -8,7 +8,7 @@ import sys
 # Add root to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-app = FastAPI(title="OpenAI Agent SDK Production API", version="1.0.0")
+app = FastAPI(title="OpenAI Agent SDK Blueprint API", version="1.0.0")
 
 class AgentRequest(BaseModel):
     query: str

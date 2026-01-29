@@ -5,7 +5,7 @@ VENV_DIR="venv"
 REQS_FILE="requirements.txt"
 ENV_FILE=".env"
 
-echo "🚀 Initializing PydanticAI Production Blueprint..."
+echo "🚀 Initializing PydanticAI Blueprint..."
 
 # Check for Python
 if ! command -v python3 &> /dev/null

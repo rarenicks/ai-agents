@@ -1,8 +1,8 @@
-# LangGraph Production Blueprint
+# LangGraph Blueprint
 
 > **The Cyclic Graph Framework for Complex State**
 
-This blueprint demonstrates a production-hardened agent using **LangGraph**. LangGraph is designed for heavily stateful, multi-step agent workflows where you need precise control over the "flow" of execution—loops, conditionals, and persistence.
+This blueprint demonstrates a robust agent using **LangGraph**. LangGraph is designed for heavily stateful, multi-step agent workflows where you need precise control over the "flow" of execution—loops, conditionals, and persistence.
 
 ---
 
@@ -66,11 +66,11 @@ If you set `LANGSMITH_TRACING=true` in `.env`, go to [smith.langchain.com](https
 
 ---
 
-## 🛡 Production Readiness Checklist
+## 🛡 Blueprint Features Checklist
 
-| Feature | Implemented? | Production Recommendation |
+| Feature | Implemented? | Notes |
 | :--- | :---: | :--- |
-| **Persistence** | ⚠️ | Currently using `MemorySaver` (RAM). Switch to `PostgresSaver` for production apps. |
+| **Persistence** | ⚠️ | Currently using `MemorySaver` (RAM). Switch to `PostgresSaver` for real apps. |
 | **Async** | ✅ | The API and Graph uses `async/await` for high concurrency. |
 | **Retries** | ❌ | Add node-level retry policies for robust web searching. |
 | **Streaming** | ❌ | API currently waits for full response. Upgrade to SSE (Server-Sent Events) for real-time UX. |

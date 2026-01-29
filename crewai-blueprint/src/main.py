@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import sys
-from src.crew import ProductionBlueprintCrew
+from src.crew import BlueprintCrew
 
 def run():
     """
@@ -9,7 +9,7 @@ def run():
     inputs = {
         'topic': 'AI Agents in Enterprise Workflows'
     }
-    ProductionBlueprintCrew().crew().kickoff(inputs=inputs)
+    BlueprintCrew().crew().kickoff(inputs=inputs)
 
 def train():
     """
@@ -19,7 +19,7 @@ def train():
         "topic": "AI Agents in Enterprise Workflows"
     }
     try:
-        ProductionBlueprintCrew().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
+        BlueprintCrew().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
 
     except Exception as e:
         raise Exception(f"An error occurred while training the crew: {e}")
@@ -29,7 +29,7 @@ def replay():
     Replay the crew execution from a specific task.
     """
     try:
-        ProductionBlueprintCrew().crew().replay(task_id=sys.argv[1])
+        BlueprintCrew().crew().replay(task_id=sys.argv[1])
 
     except Exception as e:
         raise Exception(f"An error occurred while replaying the crew: {e}")
@@ -42,7 +42,7 @@ def test():
         "topic": "AI Agents in Enterprise Workflows"
     }
     try:
-        ProductionBlueprintCrew().crew().test(n_iterations=int(sys.argv[1]), openai_model_name=sys.argv[2], inputs=inputs)
+        BlueprintCrew().crew().test(n_iterations=int(sys.argv[1]), openai_model_name=sys.argv[2], inputs=inputs)
 
     except Exception as e:
         raise Exception(f"An error occurred while testing the crew: {e}")

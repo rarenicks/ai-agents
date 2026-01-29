@@ -1,4 +1,4 @@
-# DSPy Production Blueprint
+# DSPy Blueprint
 
 > **The Framework for Programming—Not Prompting—LMs**
 
@@ -64,9 +64,9 @@ curl -X POST http://localhost:8000/check \
 
 ---
 
-## 🛡 Production Readiness Checklist
+## 🛡 Blueprint Features Checklist
 
-| Feature | Implemented? | Production Recommendation |
+| Feature | Implemented? | Notes |
 | :--- | :---: | :--- |
 | **Optimization** | ❌ (Basic) | Crucial step missing: Use `BootstrapFewShot` to "compile" this module with labeled examples (`trainset`) to maximize accuracy. |
 | **Caching** | ❌ | DSPy has a built-in cache. Enable it for development speed. |

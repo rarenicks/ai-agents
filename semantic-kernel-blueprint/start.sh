@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Semantic Kernel Blueprint Setup Script
-echo "🔮 Initializing Semantic Kernel Production Blueprint..."
+echo "🔮 Initializing Semantic Kernel Blueprint..."
 
 # 1. Setup Virtual Environment
 if [ ! -d "venv" ]; then

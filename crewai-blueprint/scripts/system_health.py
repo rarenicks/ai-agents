@@ -22,7 +22,7 @@ def check_dependencies():
         return False
 
 def main():
-    print("=== CrewAI Production Blueprint Health Check ===")
+    print("=== CrewAI Blueprint Health Check ===")
     env_ok = check_env()
     deps_ok = check_dependencies()
     

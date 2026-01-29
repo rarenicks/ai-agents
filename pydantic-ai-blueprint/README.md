@@ -1,4 +1,4 @@
-# PydanticAI Production Blueprint
+# PydanticAI Blueprint
 
 > **The Type-Safe Agent Framework**
 
@@ -67,9 +67,9 @@ curl -X POST http://localhost:8000/support \
 
 ---
 
-## 🛡 Production Readiness Checklist
+## 🛡 Blueprint Features Checklist
 
-| Feature | Implemented? | Production Recommendation |
+| Feature | Implemented? | Notes |
 | :--- | :---: | :--- |
 | **Structured Output** | ✅ | Guaranteed by Pydantic models. |
 | **Dependency Injection** | ✅ | Fully used for passing user context. |

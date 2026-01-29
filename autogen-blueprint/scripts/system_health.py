@@ -31,7 +31,7 @@ def check_dependencies():
         return False
 
 def main():
-    print("=== AutoGen Production Blueprint Health Check ===")
+    print("=== AutoGen Blueprint Health Check ===")
     env_ok = check_env()
     deps_ok = check_dependencies()
     

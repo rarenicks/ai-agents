@@ -13,7 +13,7 @@ def get_agent():
     reader = SimpleDirectoryReader(input_dir=settings.DATA_DIR)
     documents = reader.load_data()
     
-    # In production, you'd use a Vector DB like Pinecone/Milvus here.
+    # In a real app, you'd use a Vector DB like Pinecone/Milvus here.
     # For the blueprint, we'll use a local simple vector index.
     index = VectorStoreIndex.from_documents(documents)
     

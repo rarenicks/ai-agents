@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# DSPy Production Blueprint Setup Script
+# DSPy Blueprint Setup Script
 
 if [ ! -d "venv" ]; then
     echo "Creating virtual environment..."

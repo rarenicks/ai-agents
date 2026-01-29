@@ -8,7 +8,7 @@ import sys
 # Add root to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-app = FastAPI(title="LlamaIndex Production API", version="1.0.0")
+app = FastAPI(title="LlamaIndex Blueprint API", version="1.0.0")
 
 # Cache the agent instance
 agent = get_agent()

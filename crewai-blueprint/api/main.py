@@ -1,9 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from src.crew import ProductionBlueprintCrew
+from src.crew import BlueprintCrew
 import uvicorn
 
-app = FastAPI(title="CrewAI Production API", version="1.0.0")
+app = FastAPI(title="CrewAI Blueprint API", version="1.0.0")
 
 class KickoffRequest(BaseModel):
     topic: str
@@ -20,7 +20,7 @@ def health_check():
 async def kickoff_crew(request: KickoffRequest):
     try:
         inputs = {'topic': request.topic}
-        result = ProductionBlueprintCrew().crew().kickoff(inputs=inputs)
+        result = BlueprintCrew().crew().kickoff(inputs=inputs)
         return KickoffResponse(status="success", result=str(result))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

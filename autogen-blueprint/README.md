@@ -1,4 +1,4 @@
-# AutoGen Production Blueprint
+# AutoGen Blueprint
 
 > **The Conversational Multi-Agent Framework**
 
@@ -61,11 +61,11 @@ python api/main.py
 
 ---
 
-## 🛡 Production Readiness Checklist
+## 🛡 Blueprint Features Checklist
 
-| Feature | Implemented? | Production Recommendation |
+| Feature | Implemented? | Notes |
 | :--- | :---: | :--- |
-| **Sandboxing** | ✅ | Docker execution is mandatory in this blueprint. **Never disable this in production.** |
+| **Sandboxing** | ✅ | Docker execution is mandatory in this blueprint. |
 | **Human-in-the-loop** | Limited | AutoGen supports `human_input_mode="ALWAYS"`. In an API context, this is tricky; often better to set to `NEVER` for autonomous tasks. |
 | **State Management** | ❌ | AutoGen chats are usually ephemeral. For long-term memory, integration with vector DBs (like Chroma) is required. |
 | **Costs** | ⚠️ | Code-writing loops can be long. Monitor step counts and token usage aggressively. |

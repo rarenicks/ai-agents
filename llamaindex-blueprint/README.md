@@ -1,8 +1,8 @@
-# LlamaIndex Production Blueprint
+# LlamaIndex Blueprint
 
 > **The Data-Centric Agent Framework (RAG)**
 
-This blueprint demonstrates a production-ready **RAG (Retrieval-Augmented Generation)** agent using **LlamaIndex**. While other frameworks focus on orchestration, LlamaIndex focuses on **connecting data to LLMs**.
+This blueprint demonstrates a **RAG (Retrieval-Augmented Generation)** agent using **LlamaIndex**. While other frameworks focus on orchestration, LlamaIndex focuses on **connecting data to LLMs**.
 
 ---
 
@@ -67,9 +67,9 @@ Edit `data/policy.md`. Change the "Meal Allowance" to `$100`. Restart the server
 
 ---
 
-## 🛡 Production Readiness Checklist
+## 🛡 Blueprint Features Checklist
 
-| Feature | Implemented? | Production Recommendation |
+| Feature | Implemented? | Notes |
 | :--- | :---: | :--- |
 | **Ingestion** | ✅ (Simple) | Use `LlamaParse` for complex PDFs/Docs instead of simple text readers. |
 | **Vector DB** | ⚠️ (Local) | Currently memory-based. Switch to Qdrant/Pinecone for handling large datasets. |
@@ -78,4 +78,4 @@ Edit `data/policy.md`. Change the "Meal Allowance" to `$100`. Restart the server
 | **Containerization**| ✅ | `Dockerfile` included. |
 
 ## 💡 Pro Tip
-LlamaIndex creates a storage folder locally (`storage/`) if you persist it. In production, you never want to re-index data on every startup. You should build the index *once* (in a build pipeline), save it to disk/S3, and have your API simply *load* it for faster startup times.
+LlamaIndex creates a storage folder locally (`storage/`) if you persist it. In a real environment, you never want to re-index data on every startup. You should build the index *once* (in a build pipeline), save it to disk/S3, and have your API simply *load* it for faster startup times.

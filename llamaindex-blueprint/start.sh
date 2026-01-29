@@ -5,7 +5,7 @@ VENV_DIR="venv"
 REQS_FILE="requirements.txt"
 ENV_FILE=".env"
 
-echo "🚀 Initializing LlamaIndex Production Blueprint..."
+echo "🚀 Initializing LlamaIndex Blueprint..."
 
 # Check for Python
 if ! command -v python3 &> /dev/null

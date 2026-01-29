@@ -2,7 +2,7 @@
 
 VENV_DIR="venv"
 
-echo "🚀 Initializing AutoGen Production Blueprint..."
+echo "🚀 Initializing AutoGen Blueprint..."
 
 # Check for uv
 if command -v uv &> /dev/null

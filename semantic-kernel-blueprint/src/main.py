@@ -8,7 +8,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from src.orchestration.workflow import run_enterprise_workflow
 
 async def main():
-    print("🔮 Semantic Kernel Production Blueprint")
+    print("🔮 Semantic Kernel Blueprint")
     print("---------------------------------------")
     
     query = "Analyze the impact of Agentic Workflows on Enterprise Productivity."

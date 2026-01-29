@@ -1,4 +1,4 @@
-# Semantic Kernel Production Blueprint
+# Semantic Kernel Blueprint
 
 > **The Enterprise Integration Framework**
 
@@ -65,9 +65,9 @@ curl -X POST http://localhost:8000/process \
 
 ---
 
-## 🛡 Production Readiness Checklist
+## 🛡 Blueprint Features Checklist
 
-| Feature | Implemented? | Production Recommendation |
+| Feature | Implemented? | Notes |
 | :--- | :---: | :--- |
 | **Enterprise Auth** | ✅ | SK supports Azure AD auth natively (especially with Azure OpenAI). |
 | **Filters** | ❌ | Implement `AutoFunctionInvocationFilter` to intercept and approve tool calls before they execute. |

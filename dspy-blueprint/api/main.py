@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from src.modules.fact_checker import get_module
 
-app = FastAPI(title="DSPy Production Blueprint")
+app = FastAPI(title="DSPy Blueprint")
 
 # Initialize the module once on startup
 module = get_module()

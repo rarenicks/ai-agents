@@ -4,8 +4,8 @@ import uuid
 
 st.set_page_config(page_title="Agno Agent Blueprint", page_icon="🤖")
 
-st.title("Agno Production Agent 🤖")
-st.markdown("This interface demonstrates a production-ready Agno agent with persistence and tool calling.")
+st.title("Agno Blueprint Agent 🤖")
+st.markdown("This interface demonstrates a robust Agno agent with persistence and tool calling.")
 
 # Initialize session state for chat history and session ID
 if "session_id" not in st.session_state:

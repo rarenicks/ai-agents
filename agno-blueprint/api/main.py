@@ -4,7 +4,7 @@ from typing import Optional, List
 from src.agents.assistant import get_assistant
 import uuid
 
-app = FastAPI(title="Phidata Production Agent API")
+app = FastAPI(title="Phidata Blueprint Agent API")
 
 class ChatRequest(BaseModel):
     message: str

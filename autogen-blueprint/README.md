@@ -21,7 +21,7 @@ AutoGen abstracts everything as a "Conversation".
 
 ### 🏗 Architecture Explained
 ```
-autogen-production-blueprint/
+autogen-blueprint/
 ├── src/
 │   └── agents/
 │       └── group_chat.py      # <--- THE CHAT. Defines the Assistant and UserProxy interaction.

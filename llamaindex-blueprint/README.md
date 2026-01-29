@@ -22,7 +22,7 @@ In this blueprint, we go a step further and wrap this RAG pipeline into an **Age
 
 ### 🏗 Architecture Explained
 ```
-llamaindex-production-blueprint/
+llamaindex-blueprint/
 ├── src/
 │   └── agents/
 │       └── policy_agent.py    # <--- THE RAG AGENT. index creation + tool wrapping + agent init.

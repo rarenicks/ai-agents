@@ -14,7 +14,7 @@ class KickoffResponse(BaseModel):
 
 @app.get("/health")
 def health_check():
-    return {"status": "healthy", "service": "crewai-production-blueprint"}
+    return {"status": "healthy", "service": "crewai-blueprint"}
 
 @app.post("/kickoff", response_model=KickoffResponse)
 async def kickoff_crew(request: KickoffRequest):

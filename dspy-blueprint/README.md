@@ -21,7 +21,7 @@ Machine Learning moved from manual feature engineering to deep learning layers. 
 
 ### 🏗 Architecture Explained
 ```
-dspy-production-blueprint/
+dspy-blueprint/
 ├── src/
 │   └── modules/
 │       └── fact_checker.py    # <--- THE MODULE. Defines the dspy.Signature and dspy.Module.

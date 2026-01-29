@@ -21,7 +21,7 @@ Standard "DAG" (Directed Acyclic Graph) chains flow in one direction (Start -> A
 
 ### 🏗 Architecture Explained
 ```
-langgraph-production-blueprint/
+langgraph-blueprint/
 ├── src/
 │   ├── agents/
 │   │   └── research_graph.py  # <--- THE MAP. Defines Nodes, Edges, and the Workflow Graph.

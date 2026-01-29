@@ -19,7 +19,7 @@ The magic is in the **Handoff**: Agent A can return a `Result` that contains a p
 
 ### 🏗 Architecture Explained
 ```
-openai-agents-production-blueprint/
+openai-agents-blueprint/
 ├── src/
 │   ├── agents/
 │   │   └── handoff_agents.py   # <--- THE TEAM. Defines Triage, Flight, and Hotel agents + handoff tools.

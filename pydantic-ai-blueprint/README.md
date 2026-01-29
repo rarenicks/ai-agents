@@ -21,7 +21,7 @@ Many agent frameworks rely on loose dictionaries or chaotic prompt engineering t
 
 ### 🏗 Architecture Explained
 ```
-pydantic-ai-production-blueprint/
+pydantic-ai-blueprint/
 ├── src/
 │   ├── agents/
 │   │   └── support_agent.py   # <--- THE LOGIC. Defines the Agent, Deps, and Result Models.

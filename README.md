@@ -26,15 +26,15 @@ Each directory contains a standalone implementation using a specific framework, 
 | Framework | Core Philosophy | Best For Learning... |
 | :--- | :--- | :--- |
 | **[Google ADK](./google-ai-agent-system)** | Systemic Design | How to structure large, multi-agent systems with clear delegation. |
-| **[LangGraph](./langgraph-production-blueprint)** | Graph Theory | Managing complex, cyclic state and time-travel debugging. |
-| **[CrewAI](./crewai-production-blueprint)** | Role-Playing | Orchestrating teams with distinct personas and hierarchical tasks. |
-| **[PydanticAI](./pydantic-ai-production-blueprint)** | Type Safety | Using Python type systems to enforce LLM output structure. |
-| **[Agno (Phidata)](./agno-production-blueprint)** | Storage-First | Persisting long-running agent sessions in a database. |
-| **[LlamaIndex](./llamaindex-production-blueprint)** | Data-Centric | Integrating agents deeply with vector search and RAG pipelines. |
-| **[OpenAI Swarm](./openai-agents-production-blueprint)** | Minimalist | Understanding native handoffs without heavy abstraction layers. |
-| **[AutoGen](./autogen-production-blueprint)** | Conversational | Sandboxed code execution and multi-agent chat loops. |
-| **[Semantic Kernel](./semantic-kernel-production-blueprint)** | Plugin-Based | Integrating LLMs into existing enterprise applications (C#/.NET roots). |
-| **[DSPy](./dspy-production-blueprint)** | Declarative | "Programming" prompts through optimization rather than manual engineering. |
+| **[LangGraph](./langgraph-blueprint)** | Graph Theory | Managing complex, cyclic state and time-travel debugging. |
+| **[CrewAI](./crewai-blueprint)** | Role-Playing | Orchestrating teams with distinct personas and hierarchical tasks. |
+| **[PydanticAI](./pydantic-ai-blueprint)** | Type Safety | Using Python type systems to enforce LLM output structure. |
+| **[Agno (Phidata)](./agno-blueprint)** | Storage-First | Persisting long-running agent sessions in a database. |
+| **[LlamaIndex](./llamaindex-blueprint)** | Data-Centric | Integrating agents deeply with vector search and RAG pipelines. |
+| **[OpenAI Swarm](./openai-agents-blueprint)** | Minimalist | Understanding native handoffs without heavy abstraction layers. |
+| **[AutoGen](./autogen-blueprint)** | Conversational | Sandboxed code execution and multi-agent chat loops. |
+| **[Semantic Kernel](./semantic-kernel-blueprint)** | Plugin-Based | Integrating LLMs into existing enterprise applications (C#/.NET roots). |
+| **[DSPy](./dspy-blueprint)** | Declarative | "Programming" prompts through optimization rather than manual engineering. |
 
 ## 🛠 Usage Guide
 
@@ -49,7 +49,7 @@ Each blueprint is self-contained with its own dependencies and configuration (no
 2.  **Select a Framework**:
     Decide what you want to learn (e.g., "How does LangGraph handle loops?").
     ```bash
-    cd langgraph-production-blueprint
+    cd langgraph-blueprint
     ```
 
 3.  **Initialize**:

@@ -21,7 +21,7 @@ SK envisions a world where your app interacts with "Plugins".
 
 ### 🏗 Architecture Explained
 ```
-semantic-kernel-production-blueprint/
+semantic-kernel-blueprint/
 ├── src/
 │   ├── plugins/
 │   │   └── MathPlugin.py      # <--- NATIVE FUNCTION. A python class exposed to AI.

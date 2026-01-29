@@ -21,7 +21,7 @@ CrewAI is built around the concept of **Process Management**. You don't just "ch
 
 ### 🏗 Architecture Explained
 ```
-crewai-production-blueprint/
+crewai-blueprint/
 ├── src/
 │   ├── crew.py                # <--- THE TEAM. Loads YAMLs and assembles the Agents & Tasks.
 │   └── tools/

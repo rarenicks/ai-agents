@@ -21,7 +21,7 @@ Most agent frameworks keep memory in RAM or simple JSON files. Agno flips this: 
 
 ### 🏗 Architecture Explained
 ```
-agno-production-blueprint/
+agno-blueprint/
 ├── src/
 │   └── agents/
 │       └── assistant.py    # <--- THE BRAIN. Configures the Agent, Tools, and DB connection.
